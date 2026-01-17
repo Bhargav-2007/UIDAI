@@ -1,0 +1,21 @@
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.env
+
+# NodeJS
+node_modules/
+dist/
+.DS_Store
+
+# Dataset (Assuming we don't want to push extremely large csvs if they are huge, but user said "UIDAI Dataset" is the folder name. I'll exclude the specific raw data folders if they are huge, but generally I'll just exclude standard large files. For now I'll include the csvs if they are part of the project structure unless they are explicitly huge. Usually dataset folders should be ignored)
+# Ignoring specific large dataset folders if standard practice, but since the user calls the root "UIDAI Dataset", I will keep the csvs unless told otherwise, OR if they are standard "api_data*" folders I saw earlier.
+# Looking at previous file views, there is a "Dataset" folder in parent? No, "DATASET_BASE_PATH = Path(os.path.dirname(os.path.abspath(__file__))).parent / "Dataset"".
+# The workspace is "d:\DELL\Documents\UIDAI Dataset". The backend code refers to a "Dataset" folder at the same level as backend.
+# I'll check the directory structure first to be safe. But standard ignores are good.
+
+# VSCode
+.vscode/
