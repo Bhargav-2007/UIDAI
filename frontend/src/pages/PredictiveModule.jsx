@@ -84,13 +84,91 @@ const PredictiveModule = () => {
                     {data && (
                         <div className="bg-slate-900 border border-slate-700 rounded-lg p-6 shadow-xl">
                             <h3 className="text-lg font-semibold text-blue-400 mb-4">Prediction Visualization</h3>
-                            <div className="text-slate-500 text-center p-10">Chart rendering logic placeholder.</div>
+                            {renderChart()}
                         </div>
                     )}
                 </div>
             )}
         </div>
     );
+
+    function renderChart() {
+        if (!data || !data.visualization_data) return null;
+        const { visualization_data } = data;
+
+        if (activeTechnique === 'forecast' && visualization_data.historical) {
+            // Combine historical and forecast data
+            const historical = visualization_data.historical || {};
+            const forecast = visualization_data.forecast || {};
+            
+            const historicalData = (historical.months || []).slice(-24).map((month, i) => ({
+                month,
+                value: historical.values[historical.values.length - 24 + i],
+                type: 'historical'
+            }));
+            
+            const forecastData = (forecast.months || []).map((month, i) => ({
+                month,
+                value: forecast.values[i],
+                ci_lower: forecast.ci_lower[i],
+                ci_upper: forecast.ci_upper[i],
+                type: 'forecast'
+            }));
+            
+            const chartData = [...historicalData, ...forecastData];
+            
+            return (
+                <div className="h-80 w-full mt-6">
+                    <ResponsiveContainer>
+                        <LineChart data={chartData}>
+                            <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
+                            <XAxis dataKey="month" stroke="#94a3b8" />
+                            <YAxis stroke="#94a3b8" />
+                            <Tooltip contentStyle={{ backgroundColor: '#1e293b', borderColor: '#334155' }} />
+                            <Legend />
+                            <Line type="monotone" dataKey="value" stroke="#3b82f6" name="Enrolments" strokeWidth={2} />
+                            <Line type="monotone" dataKey="ci_upper" stroke="#10b981" name="Upper CI" strokeDasharray="5 5" />
+                            <Line type="monotone" dataKey="ci_lower" stroke="#ef4444" name="Lower CI" strokeDasharray="5 5" />
+                        </LineChart>
+                    </ResponsiveContainer>
+                </div>
+            );
+        } else if (activeTechnique === 'regression' && visualization_data.feature_importance) {
+            const labels = visualization_data.feature_importance.labels;
+            const values = visualization_data.feature_importance.values;
+            const chartData = labels.map((label, i) => ({
+                feature: label,
+                importance: values[i]
+            }));
+            
+            return (
+                <div className="h-80 w-full mt-6">
+                    <ResponsiveContainer>
+                        <BarChart data={chartData}>
+                            <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
+                            <XAxis dataKey="feature" stroke="#94a3b8" />
+                            <YAxis stroke="#94a3b8" />
+                            <Tooltip contentStyle={{ backgroundColor: '#1e293b', borderColor: '#334155' }} />
+                            <Bar dataKey="importance" fill="#8b5cf6" name="Importance %" />
+                        </BarChart>
+                    </ResponsiveContainer>
+                </div>
+            );
+        }
+
+        return (
+            <div className="text-slate-500 text-center p-10">
+                <p className="text-sm">Visualization data loaded</p>
+                <p className="text-xs text-slate-600 mt-2">Technique: {activeTechnique}</p>
+                <details className="mt-4 text-left">
+                    <summary className="cursor-pointer text-blue-400 hover:text-blue-300">View Raw Data</summary>
+                    <pre className="mt-2 bg-slate-950 p-4 rounded text-[10px] overflow-auto max-h-40">
+                        {JSON.stringify(visualization_data, null, 2)}
+                    </pre>
+                </details>
+            </div>
+        );
+    }
 };
 
 export default PredictiveModule;

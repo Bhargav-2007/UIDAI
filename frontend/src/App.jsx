@@ -1,12 +1,13 @@
 
 import React, { useState } from 'react';
 import Sidebar from './components/Sidebar';
+import ExecutiveSummary from './pages/ExecutiveSummary';
 import Home from './pages/Home';
+import FraudModuleNew from './pages/FraudModuleNew';
+import OperationsModuleNew from './pages/OperationsModuleNew';
+import PredictiveModuleNew from './pages/PredictiveModuleNew';
+import GeographicModuleNew from './pages/GeographicModuleNew';
 import DescriptiveModule from './pages/DescriptiveModule';
-import FraudModule from './pages/FraudModule';
-import OperationsModule from './pages/OperationsModule';
-import PredictiveModule from './pages/PredictiveModule';
-import GeographicModule from './pages/GeographicModule';
 import QualityModule from './pages/QualityModule';
 import AdvancedModule from './pages/AdvancedModule';
 import DataExplorer from './pages/DataExplorer';
@@ -17,18 +18,18 @@ function App() {
 
   const renderModule = () => {
     switch (activeModule) {
-      case 'home': return <Home onNavigate={handleNavEnhanced} />;
+      case 'home': return <ExecutiveSummary />;
+      case 'fraud': return <FraudModuleNew />;
+      case 'operations': return <OperationsModuleNew />;
+      case 'predictive': return <PredictiveModuleNew />;
+      case 'geographic': return <GeographicModuleNew />;
       case 'descriptive': return <DescriptiveModule />;
-      case 'fraud': return <FraudModule />;
-      case 'operations': return <OperationsModule />;
-      case 'predictive': return <PredictiveModule />;
-      case 'geographic': return <GeographicModule />;
       case 'quality': return <QualityModule />;
       case 'advanced': return <AdvancedModule />;
-      case 'explorer': // Data Management group
-      case 'grid': return <DataExplorer />; // Alias
+      case 'explorer':
+      case 'grid': return <DataExplorer />;
       case 'powerbi': return <PowerBIContainer />;
-      default: return <Home onNavigate={handleNavEnhanced} />;
+      default: return <ExecutiveSummary />;
     }
   };
 

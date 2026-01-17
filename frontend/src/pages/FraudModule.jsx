@@ -48,10 +48,10 @@ const FraudModule = () => {
 
         if (activeTechnique === 'benford') {
             const d = visualization_data;
-            const chartData = d.digits.map((digit, i) => ({
+            const chartData = d.labels.map((digit, i) => ({
                 digit,
-                Actual: d.actual_freq[i],
-                Expected: d.expected_freq[i]
+                'Actual %': d.observed[i],
+                'Expected (Benford) %': d.expected[i]
             }));
             return (
                 <div className="h-80 w-full mt-6">
@@ -62,14 +62,46 @@ const FraudModule = () => {
                             <YAxis stroke="#94a3b8" />
                             <Tooltip contentStyle={{ backgroundColor: '#1e293b', borderColor: '#334155' }} />
                             <Legend />
-                            <Bar dataKey="Actual" fill="#ef4444" name="Actual %" />
-                            <Bar dataKey="Expected" fill="#3b82f6" name="Expected (Benford) %" />
+                            <Bar dataKey="Actual %" fill="#ef4444" name="Actual %" />
+                            <Bar dataKey="Expected (Benford) %" fill="#3b82f6" name="Expected (Benford) %" />
+                        </BarChart>
+                    </ResponsiveContainer>
+                </div>
+            );
+        } else if (activeTechnique === 'outliers' && visualization_data.histogram) {
+            const bins = visualization_data.histogram.bin_edges;
+            const values = visualization_data.histogram.values;
+            const chartData = bins.slice(0, -1).map((bin, i) => ({
+                range: `${Math.round(bin)}-${Math.round(bins[i + 1])}`,
+                count: values[i]
+            }));
+            return (
+                <div className="h-80 w-full mt-6">
+                    <ResponsiveContainer>
+                        <BarChart data={chartData}>
+                            <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
+                            <XAxis dataKey="range" stroke="#94a3b8" angle={-45} textAnchor="end" height={80} />
+                            <YAxis stroke="#94a3b8" />
+                            <Tooltip contentStyle={{ backgroundColor: '#1e293b', borderColor: '#334155' }} />
+                            <Bar dataKey="count" fill="#8b5cf6" />
                         </BarChart>
                     </ResponsiveContainer>
                 </div>
             );
         }
-        return <div className="text-slate-500 text-center p-10">Visualization data loaded. Chart rendering logic for this technique is minimal in demo.</div>;
+        
+        return (
+            <div className="text-slate-500 text-center p-10">
+                <p className="text-sm">Visualization data loaded</p>
+                <p className="text-xs text-slate-600 mt-2">Technique: {activeTechnique}</p>
+                <details className="mt-4 text-left">
+                    <summary className="cursor-pointer text-blue-400 hover:text-blue-300">View Raw Data</summary>
+                    <pre className="mt-2 bg-slate-950 p-4 rounded text-[10px] overflow-auto max-h-40">
+                        {JSON.stringify(visualization_data, null, 2)}
+                    </pre>
+                </details>
+            </div>
+        );
     };
 
     return (

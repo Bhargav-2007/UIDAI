@@ -4,29 +4,61 @@ const Home = ({ onNavigate }) => {
     const [kpis, setKpis] = useState([]);
     const [systemStatus, setSystemStatus] = useState({});
     const [loading, setLoading] = useState(true);
+    const [lastUpdated, setLastUpdated] = useState(null);
+    const [analyticsRunning, setAnalyticsRunning] = useState(false);
 
     useEffect(() => {
-        const fetchSummary = async () => {
-            try {
-                const response = await fetch('http://localhost:8000/api/executive/summary');
-                const data = await response.json();
-                setKpis(data.kpis);
-                setSystemStatus(data.system_status);
-            } catch (error) {
-                console.error("Failed to load executive summary:", error);
-            } finally {
-                setLoading(false);
-            }
-        };
-
         fetchSummary();
+        // Auto-refresh every 30 seconds
+        const interval = setInterval(fetchSummary, 30000);
+        return () => clearInterval(interval);
     }, []);
+
+    const fetchSummary = async () => {
+        try {
+            setLoading(true);
+            const response = await fetch('http://localhost:8000/api/executive/summary');
+            const data = await response.json();
+            setKpis(data.kpis);
+            setSystemStatus(data.system_status);
+            setLastUpdated(new Date());
+        } catch (error) {
+            console.error("Failed to load executive summary:", error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const handleRunAllAnalytics = async () => {
+        setAnalyticsRunning(true);
+        try {
+            // Run key analytics in sequence
+            await Promise.all([
+                fetch('http://localhost:8000/api/fraud/benford'),
+                fetch('http://localhost:8000/api/operations/queue-theory'),
+                fetch('http://localhost:8000/api/predictive/forecast')
+            ]);
+            // Refresh KPIs after analytics
+            await fetchSummary();
+        } catch (error) {
+            console.error("Error running analytics:", error);
+        } finally {
+            setAnalyticsRunning(false);
+        }
+    };
 
     return (
         <div className="p-8 max-w-7xl mx-auto pl-72">
-            <div className="mb-8">
-                <h1 className="text-3xl font-bold text-white mb-2">Executive Summary</h1>
-                <p className="text-slate-400">National-Scale Decision Support System (v3.0)</p>
+            <div className="mb-8 flex justify-between items-start">
+                <div>
+                    <h1 className="text-3xl font-bold text-white mb-2">Executive Summary</h1>
+                    <p className="text-slate-400">National-Scale Decision Support System (v3.0)</p>
+                </div>
+                {lastUpdated && (
+                    <div className="text-xs text-slate-500">
+                        Updated: {lastUpdated.toLocaleTimeString()}
+                    </div>
+                )}
             </div>
 
             {/* KPI Cards */}
@@ -57,6 +89,21 @@ const Home = ({ onNavigate }) => {
                 <div className="bg-slate-900 border border-slate-700 p-6 rounded-xl">
                     <h3 className="font-semibold text-white mb-4">Quick Actions</h3>
                     <div className="space-y-3">
+                        <button
+                            onClick={handleRunAllAnalytics}
+                            disabled={analyticsRunning}
+                            className={`w-full text-left p-4 bg-blue-900/20 rounded-lg border border-blue-500/30 hover:border-blue-400 transition-all flex justify-between items-center group ${
+                                analyticsRunning ? 'opacity-60 cursor-not-allowed' : ''
+                            }`}
+                        >
+                            <div>
+                                <div className="text-blue-400 font-medium group-hover:text-blue-300">
+                                    {analyticsRunning ? 'Running Analytics...' : 'Execute All Analytics'}
+                                </div>
+                                <div className="text-xs text-slate-500">Fraud Detection, Operations, & Forecasting</div>
+                            </div>
+                            <span className="text-slate-500">{analyticsRunning ? '⟳' : '→'}</span>
+                        </button>
                         <button onClick={() => onNavigate('fraud', 'benford')} className="w-full text-left p-4 bg-slate-800 rounded-lg hover:bg-slate-700 border border-slate-700 hover:border-blue-500 transition-all flex justify-between items-center group">
                             <div>
                                 <div className="text-blue-400 font-medium group-hover:text-blue-300">Investigate Data Integrity</div>

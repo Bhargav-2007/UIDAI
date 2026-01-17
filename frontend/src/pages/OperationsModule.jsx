@@ -44,7 +44,63 @@ const OperationsModule = () => {
 
     const renderChart = () => {
         if (!data || !data.visualization_data) return null;
-        return <div className="text-slate-500 text-center p-10">Visualization data loaded. Chart ready for rendering.</div>;
+        const { visualization_data } = data;
+
+        if (activeTechnique === 'queue-theory' && visualization_data.daily_trend) {
+            const last30 = visualization_data.daily_trend.dates.slice(-30);
+            const last30Values = visualization_data.daily_trend.values.slice(-30);
+            const chartData = last30.map((date, i) => ({
+                date: new Date(date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
+                throughput: last30Values[i],
+                capacity: visualization_data.daily_trend.capacity_line
+            }));
+            return (
+                <div className="h-80 w-full mt-6">
+                    <ResponsiveContainer>
+                        <LineChart data={chartData}>
+                            <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
+                            <XAxis dataKey="date" stroke="#94a3b8" />
+                            <YAxis stroke="#94a3b8" />
+                            <Tooltip contentStyle={{ backgroundColor: '#1e293b', borderColor: '#334155' }} />
+                            <Legend />
+                            <Line type="monotone" dataKey="throughput" stroke="#10b981" name="Actual Throughput" />
+                            <Line type="monotone" dataKey="capacity" stroke="#f59e0b" name="Capacity" strokeDasharray="5 5" />
+                        </LineChart>
+                    </ResponsiveContainer>
+                </div>
+            );
+        } else if (activeTechnique === 'load-balance' && visualization_data.pie_chart) {
+            const pieData = visualization_data.pie_chart.labels.map((label, i) => ({
+                name: label,
+                value: visualization_data.pie_chart.values[i]
+            }));
+            return (
+                <div className="h-80 w-full mt-6">
+                    <ResponsiveContainer>
+                        <BarChart data={pieData}>
+                            <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
+                            <XAxis dataKey="name" stroke="#94a3b8" angle={-45} textAnchor="end" height={80} />
+                            <YAxis stroke="#94a3b8" />
+                            <Tooltip contentStyle={{ backgroundColor: '#1e293b', borderColor: '#334155' }} />
+                            <Bar dataKey="value" fill="#6366f1" name="Load %" />
+                        </BarChart>
+                    </ResponsiveContainer>
+                </div>
+            );
+        }
+
+        return (
+            <div className="text-slate-500 text-center p-10">
+                <p className="text-sm">Visualization data loaded</p>
+                <p className="text-xs text-slate-600 mt-2">Technique: {activeTechnique}</p>
+                <details className="mt-4 text-left">
+                    <summary className="cursor-pointer text-blue-400 hover:text-blue-300">View Raw Data</summary>
+                    <pre className="mt-2 bg-slate-950 p-4 rounded text-[10px] overflow-auto max-h-40">
+                        {JSON.stringify(visualization_data, null, 2)}
+                    </pre>
+                </details>
+            </div>
+        );
     };
 
     return (
