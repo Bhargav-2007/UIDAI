@@ -4,91 +4,73 @@ const Sidebar = ({ activeModule, onNavigate }) => {
     const modules = [
         {
             id: 'home',
-            title: 'Executive Summary',
-            icon: '🏠',
+            title: 'Executive',
+            icon: 'EXE',
             items: [
-                { id: 'dashboard', label: 'Overview Dashboard' }
+                { id: 'home', label: 'Executive Summary' }
             ]
         },
         {
             id: 'descriptive',
-            title: 'Descriptive Analytics',
-            icon: '📊',
+            title: 'Descriptive',
+            icon: 'DSC',
             items: [
-                { id: 'univariate', label: 'Statistical Summary' },
-                { id: 'timeseries', label: 'Time Series Decomp' }
+                { id: 'descriptive', label: 'Statistical Summary' }
             ]
         },
         {
             id: 'fraud',
-            title: 'Fraud & Integrity',
-            icon: '🛡️',
+            title: 'Integrity',
+            icon: 'FRD',
             items: [
-                { id: 'benford', label: "Benford's Law" },
-                { id: 'outliers', label: 'Outlier Detection' },
-                { id: 'patterns', label: 'Pattern Recognition' },
-                { id: 'duplicates', label: 'Identity Resolution' },
-                { id: 'forensic', label: 'Forensic Analytics' }
+                { id: 'fraud', label: "Fraud & Integrity" },
+                { id: 'outliers', label: 'Outlier Detection' }
             ]
         },
         {
             id: 'operations',
-            title: 'Operational Efficiency',
-            icon: '⚙️',
+            title: 'Operations',
+            icon: 'OPS',
             items: [
-                { id: 'queue-theory', label: 'Queue Theory' },
-                { id: 'load-balance', label: 'Load Balancing' },
-                { id: 'throughput', label: 'Throughput Analysis' },
-                { id: 'yield', label: 'Yield Analysis' },
-                { id: 'pareto', label: 'Pareto Analysis' }
+                { id: 'operations', label: 'Operational Efficiency' }
             ]
         },
         {
             id: 'predictive',
-            title: 'Predictive Intelligence',
-            icon: '🔮',
+            title: 'Predictive',
+            icon: 'PRD',
             items: [
-                { id: 'forecast', label: 'Forecasting' },
-                { id: 'regression', label: 'Regression Analysis' },
-                { id: 'scenarios', label: 'Scenario Planning' },
-                { id: 'survival', label: 'Survival Analysis' }
+                { id: 'predictive', label: 'Forecasting' }
             ]
         },
         {
             id: 'geographic',
-            title: 'Geographic & Demo',
-            icon: '🗺️',
+            title: 'Geographic',
+            icon: 'GEO',
             items: [
-                { id: 'clusters', label: 'Cluster Analysis' },
-                { id: 'hotspots', label: 'Hotspot Analysis' },
-                { id: 'cohorts', label: 'Cohort Analysis' },
-                { id: 'gender-parity', label: 'Gender Parity' },
-                { id: 'gaps', label: 'Coverage Gap' }
+                { id: 'geographic', label: 'Cohort Analysis' }
             ]
         },
         {
             id: 'quality',
-            title: 'Comparative Quality',
-            icon: '⚖️',
+            title: 'Quality',
+            icon: 'QLT',
             items: [
-                { id: 'benchmarking', label: 'Peer Benchmarking' },
-                { id: 'deciles', label: 'Decile Analysis' },
-                { id: 'root-cause', label: 'Root Cause Analysis' }
+                { id: 'quality', label: 'Benchmarking' }
             ]
         },
         {
             id: 'advanced',
-            title: 'Advanced / AI',
-            icon: '🧠',
+            title: 'Advanced',
+            icon: 'ADV',
             items: [
-                { id: 'risk-scoring', label: 'AI Risk Scoring' },
-                { id: 'simulation', label: 'Simulations' }
+                { id: 'advanced', label: 'Risk Scoring' }
             ]
         },
         {
             id: 'explorer',
-            title: 'Data Management',
-            icon: '💾',
+            title: 'Repository',
+            icon: 'REP',
             items: [
                 { id: 'grid', label: 'Data Explorer' },
                 { id: 'powerbi', label: 'Power BI Reports' }
@@ -97,33 +79,22 @@ const Sidebar = ({ activeModule, onNavigate }) => {
     ];
 
     return (
-        <div className="w-64 bg-slate-900 border-r border-slate-700 h-screen overflow-y-auto fixed left-0 top-0 text-slate-300 flex flex-col z-20 scrollbar-thin scrollbar-thumb-slate-700">
-            {/* Header */}
-            <div className="p-4 border-b border-slate-700 flex items-center space-x-3 bg-slate-950 sticky top-0 z-10">
-                <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center text-white font-bold shadow-lg shadow-blue-900/20">
-                    A
-                </div>
-                <div>
-                    <span className="font-bold text-white tracking-wide block">UIDAI Analytics</span>
-                    <span className="text-[10px] text-blue-400 font-mono uppercase tracking-wider">v3.0 National</span>
-                </div>
-            </div>
-
-            {/* Navigation */}
-            <div className="flex-1 py-4 space-y-6">
+        <aside className="w-64 bg-[#002147] h-[calc(100vh-64px)] fixed left-0 top-16 text-white flex flex-col z-20 overflow-y-auto scrollbar-thin scrollbar-thumb-slate-700/50">
+            <div className="flex-1 py-8 space-y-8">
                 {modules.map((module) => (
-                    <div key={module.id} className="px-3">
-                        <h3 className="px-3 text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-2 flex items-center">
-                            <span className="mr-2 text-sm grayscale opacity-70">{module.icon}</span> {module.title}
+                    <div key={module.id} className="px-6">
+                        <h3 className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-4 flex items-center">
+                            <span className="w-1.5 h-1.5 bg-[#c5a059] rounded-full mr-2"></span>
+                            {module.title}
                         </h3>
-                        <div className="space-y-0.5">
+                        <div className="space-y-1">
                             {module.items.map((item) => (
                                 <button
                                     key={item.id}
                                     onClick={() => onNavigate(module.id, item.id)}
-                                    className={`w-full text-left px-3 py-1.5 rounded-md text-sm transition-all duration-200 border-l-2 ${activeModule === module.id && (item.id === 'dashboard' ? true : true) /* Simplification for active state logic needs passing sub-item */
-                                            ? 'bg-blue-900/20 text-blue-400 border-blue-500'
-                                            : 'text-slate-400 hover:bg-slate-800 hover:text-white border-transparent'
+                                    className={`w-full text-left px-3 py-2 rounded transition-all duration-200 text-xs font-medium ${activeModule === item.id
+                                        ? 'bg-[#c5a059] text-[#002147] shadow-lg'
+                                        : 'text-slate-300 hover:bg-white/10 hover:text-white'
                                         }`}
                                 >
                                     {item.label}
@@ -134,15 +105,16 @@ const Sidebar = ({ activeModule, onNavigate }) => {
                 ))}
             </div>
 
-            {/* Footer */}
-            <div className="p-4 border-t border-slate-800 text-[10px] text-slate-600 bg-slate-950 sticky bottom-0">
-                <div className="flex justify-between items-center mb-1">
-                    <span>System Status</span>
-                    <span className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
+            <div className="p-6 border-t border-white/5 bg-black/10">
+                <div className="flex flex-col gap-2">
+                    <div className="flex items-center justify-between text-[10px] text-slate-500 uppercase font-bold tracking-wider">
+                        <span>Node Status</span>
+                        <span className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.5)]"></span>
+                    </div>
+                    <div className="text-[9px] font-mono text-slate-600 text-center uppercase">Secure Environment V3.0</div>
                 </div>
-                <div className="font-mono">Secure Connection: TLS 1.3</div>
             </div>
-        </div>
+        </aside>
     );
 };
 

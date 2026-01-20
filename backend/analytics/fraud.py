@@ -103,14 +103,14 @@ async def benford_law_analysis() -> Dict[str, Any]:
                 "title": "Compute Chi-Square Statistic",
                 "description": "χ² = Σ (Observed - Expected)² / Expected",
                 "input": "Observed vs Expected counts",
-                "output": f"χ² = {chi_square:.4f}",
+                "output": f"Chi-Square = {chi_square:.4f}",
                 "details": chi_square_steps
             },
             {
                 "step": 5,
                 "title": "Calculate P-Value",
                 "description": "Probability of observing this deviation by chance",
-                "input": f"χ² = {chi_square:.4f}, df = {degrees_of_freedom}",
+                "input": f"Chi-Square = {chi_square:.4f}, df = {degrees_of_freedom}",
                 "output": f"p-value = {p_value:.6f}"
             }
         ],
@@ -253,7 +253,10 @@ async def outlier_detection() -> Dict[str, Any]:
             "z_score_outliers": int(z_outlier_count),
             "iqr_outliers": int(iqr_outlier_count),
             "confirmed_outliers": int(combined_mask.sum()),
-            "outlier_rate_percent": round(outlier_rate, 2)
+            "outlier_rate_percent": round(outlier_rate, 2),
+            "anomaly_count": int(combined_mask.sum()),
+            "max_deviation": round(float(np.abs(z_scores).max()), 2),
+            "threshold": z_threshold
         },
         "risk_classification": risk,
         "decision": decision,

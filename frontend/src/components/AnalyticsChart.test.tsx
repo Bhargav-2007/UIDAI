@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach, vi, afterEach } from 'vitest';
 import { render, screen, cleanup } from '@testing-library/react';
-import { AnalyticsChart } from './AnalyticsChart';
+import { AnalyticsChart } from './AnalyticsChartNew';
 import { ChartData, KPI } from '../types/analytics';
 import fc from 'fast-check';
 

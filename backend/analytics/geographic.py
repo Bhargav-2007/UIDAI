@@ -96,7 +96,7 @@ async def cluster_analysis() -> Dict[str, Any]:
     return {
         "technique": "K-Means Cluster Analysis",
         "description": "Groups geographic regions into distinct clusters based on enrolment volume and demographic profiles using the K-Means algorithm.",
-        "formula": "Minimize Σ ||xᵢ - μⱼ||² (Sum of squared distances to cluster centers)",
+        "formula": "Minimize Sum ||xi - muj||^2 (Sum of squared distances to cluster centers)",
         "calculation_steps": [
             {
                 "step": 1,
@@ -198,14 +198,14 @@ async def hotspot_analysis() -> Dict[str, Any]:
     return {
         "technique": "Geospatial Hotspot Analysis",
         "description": "Identifies statistically significant spatial clusters of high values (hotspots) and low values (coldspots) relative to the global average.",
-        "formula": "Z = (x - μ) / σ | HHI = Σ sᵢ²",
+        "formula": "Z = (x - mean) / std | HHI = Sum s_i^2",
         "calculation_steps": [
             {
                 "step": 1,
                 "title": "Calculate Global Statistics",
                 "description": "Mean and Standard Deviation across all districts",
                 "input": f"{len(district_totals)} districts",
-                "output": f"μ = {global_mean:,.0f}, σ = {global_std:,.0f}"
+                "output": f"mean = {global_mean:,.0f}, std = {global_std:,.0f}"
             },
             {
                 "step": 2,
@@ -239,7 +239,9 @@ async def hotspot_analysis() -> Dict[str, Any]:
             "hotspot_count": len(hotspots),
             "coldspot_count": len(coldspots),
             "concentration_level": conc_level,
-            "top_hotspot": hotspots.iloc[0]['district'] if not hotspots.empty else "None"
+            "top_hotspot": hotspots.iloc[0]['district'] if not hotspots.empty else "None",
+            "total_districts": len(district_totals),
+            "global_mean": round(global_mean, 2)
         },
         "risk_classification": "MEDIUM" if hhi > 1500 else "LOW",
         "decision": f"Geographic distribution is {conc_level}",
@@ -284,7 +286,7 @@ async def cohort_analysis() -> Dict[str, Any]:
     return {
         "technique": "Demographic Cohort Analysis",
         "description": "Segments population into age cohorts (0-5, 5-17, 18+) to analyze distinct enrollment behaviors and growth patterns.",
-        "formula": "Share % = (Cohort Vol / Total Vol) × 100 | CAGR per cohort",
+        "formula": "Share % = (Cohort Vol / Total Vol) x 100 | CAGR per cohort",
         "calculation_steps": [
             {
                 "step": 1,
@@ -311,7 +313,8 @@ async def cohort_analysis() -> Dict[str, Any]:
         "intermediate_values": {
             "total_volume": total_vol,
             "cohort_totals": totals,
-            "shares": {k: round(v, 2) for k, v in shares.items()}
+            "shares": {k: round(v, 2) for k, v in shares.items()},
+            "cohort_count": len(totals)
         },
         "final_result": {
             "dominant_cohort": max(totals, key=totals.get),

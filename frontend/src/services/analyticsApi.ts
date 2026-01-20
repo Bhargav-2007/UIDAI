@@ -108,62 +108,62 @@ export const analyticsApi = {
    * Fetch Executive Summary data
    */
   async getExecutiveSummary(before?: boolean): Promise<AnalyticsData> {
-    return fetchFromApi('/executive-summary', before);
+    return fetchFromApi('/unified/executive', before);
   },
 
   /**
    * Fetch Descriptive Analytics data
    */
   async getDescriptiveAnalytics(before?: boolean): Promise<AnalyticsData> {
-    return fetchFromApi('/descriptive-analytics', before);
+    return fetchFromApi('/unified/descriptive', before);
   },
 
   /**
    * Fetch Fraud Detection data
    */
   async getFraudDetection(before?: boolean): Promise<AnalyticsData> {
-    return fetchFromApi('/fraud-detection', before);
+    return fetchFromApi('/unified/fraud', before);
   },
 
   /**
    * Fetch Outlier Detection data
    */
   async getOutlierDetection(before?: boolean): Promise<AnalyticsData> {
-    return fetchFromApi('/outlier-detection', before);
+    return fetchFromApi('/unified/outliers', before);
   },
 
   /**
    * Fetch Operational Efficiency data
    */
   async getOperationalEfficiency(before?: boolean): Promise<AnalyticsData> {
-    return fetchFromApi('/operational-efficiency', before);
+    return fetchFromApi('/unified/operations', before);
   },
 
   /**
    * Fetch Forecasting data
    */
   async getForecasting(before?: boolean): Promise<AnalyticsData> {
-    return fetchFromApi('/forecasting', before);
+    return fetchFromApi('/unified/predictive', before);
   },
 
   /**
    * Fetch Geographic Analysis data
    */
   async getGeographicAnalysis(before?: boolean): Promise<AnalyticsData> {
-    return fetchFromApi('/geographic-analysis', before);
+    return fetchFromApi('/unified/geographic', before);
   },
 
   /**
    * Fetch Benchmarking data
    */
   async getBenchmarking(before?: boolean): Promise<AnalyticsData> {
-    return fetchFromApi('/benchmarking', before);
+    return fetchFromApi('/unified/quality', before);
   },
 
   /**
    * Fetch AI Risk Scoring data
    */
   async getAiRiskScoring(before?: boolean): Promise<AnalyticsData> {
-    return fetchFromApi('/ai-risk-scoring', before);
+    return fetchFromApi('/unified/advanced', before);
   },
 };

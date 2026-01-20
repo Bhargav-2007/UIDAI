@@ -1,84 +1,97 @@
 import React, { useState, useEffect } from 'react';
+import { api } from '../services/api';
 
 const DataExplorer = () => {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const [dataset, setDataset] = useState('enrolment');
+
+    const fetchData = async () => {
+        try {
+            setLoading(true);
+            const response = await api.rawData(dataset);
+            setData(response.data || []);
+        } catch (e) {
+            console.error("Data fetch error", e);
+            setError("Failed to load raw data from secure explorer endpoint.");
+        } finally {
+            setLoading(false);
+        }
+    };
 
     useEffect(() => {
-        // In a real app we would fetch this. For demo we simulate structure.
-        // However, we DO have a before/raw-data endpoint we could re-use or just mock for grid.
-        // Let's use the 'before' endpoint to get some raw data if possible, or simulate.
-        const fetchData = async () => {
-            try {
-                const response = await fetch('http://localhost:8000/api/before/raw-data');
-                const result = await response.json();
-                // The raw-data endpoint returns aggregation, for grid let's simulate enriched rows or use what we can
-                // Assuming result.data.daily_trend or similar to populate.
-                // Actually, let's mock the "Raw Record View" for security/privacy demonstration.
-                const mockRows = Array(20).fill(0).map((_, i) => ({
-                    id: `UID-${100000 + i}`,
-                    date: new Date(Date.now() - i * 86400000).toISOString().split('T')[0],
-                    state: ['Maharashtra', 'Delhi', 'Uttar Pradesh', 'Karnataka'][Math.floor(Math.random() * 4)],
-                    district: 'Masked',
-                    enrolment_type: 'Update',
-                    status: 'Completed',
-                    integrity_check: Math.random() > 0.9 ? 'FLAGGED' : 'PASS'
-                }));
-                setData(mockRows);
-            } catch (e) {
-                console.error(e);
-            } finally {
-                setLoading(false);
-            }
-        };
         fetchData();
-    }, []);
+    }, [dataset]);
+
+    const getColumns = () => {
+        if (dataset === 'enrolment') {
+            return ['id', 'date', 'state', 'district', 'sub_district', 'gender', 'total_enrolments'];
+        } else if (dataset === 'demographic') {
+            return ['id', 'date', 'state', 'district', 'demo_gender', 'total_demo_updates'];
+        } else {
+            return ['id', 'date', 'state', 'district', 'bio_auth', 'total_bio_updates'];
+        }
+    };
 
     return (
-        <div className="p-8 max-w-7xl mx-auto pl-72">
-            <div className="mb-8">
-                <h1 className="text-3xl font-bold text-white mb-2">Data Explorer</h1>
-                <p className="text-slate-400">Raw data inspection and management.</p>
+        <div className="flex flex-col gap-8 fade-in">
+            <div className="flex justify-between items-end border-b border-[#002147]/10 pb-6">
+                <div>
+                    <h2 className="text-4xl font-serif font-bold text-[#002147] mb-2">Data Repository</h2>
+                    <p className="text-sm font-medium text-slate-500 uppercase tracking-widest">Raw Record Inspection & Secure Audit Trail</p>
+                </div>
+                <div className="flex gap-2">
+                    {['enrolment', 'demographic', 'biometric'].map(ds => (
+                        <button
+                            key={ds}
+                            onClick={() => setDataset(ds)}
+                            className={`px-4 py-2 text-xs font-bold uppercase tracking-wider rounded transition-all ${dataset === ds
+                                ? 'bg-[#c5a059] text-[#002147] shadow-md'
+                                : 'bg-white border border-[#002147]/10 text-slate-500 hover:bg-slate-50'
+                                }`}
+                        >
+                            {ds}
+                        </button>
+                    ))}
+                </div>
             </div>
 
-            <div className="bg-slate-900 border border-slate-700 rounded-lg overflow-hidden shadow-xl">
-                <div className="p-4 border-b border-slate-700 bg-slate-800 flex justify-between items-center">
-                    <h3 className="font-semibold text-slate-300">Master Enrolment Database</h3>
-                    <button className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm rounded transition-colors flex items-center">
-                        <span>⬇️ Export CSV</span>
+            <div className="bg-white border border-[#002147]/10 rounded shadow-sm overflow-hidden">
+                <div className="p-6 border-b border-[#002147]/10 bg-slate-50/50 flex justify-between items-center">
+                    <div className="flex items-center gap-3">
+                        <div className="w-2 h-2 bg-emerald-500 rounded-full"></div>
+                        <h3 className="font-serif font-bold text-[#002147]">Secure Transaction Log: {dataset.toUpperCase()}</h3>
+                    </div>
+                    <button className="px-6 py-2 bg-[#002147] hover:bg-[#c5a059] hover:text-[#002147] text-white text-[10px] font-bold uppercase tracking-widest rounded transition-all">
+                        Request Export (CSV)
                     </button>
                 </div>
 
                 <div className="overflow-x-auto">
-                    <table className="w-full text-left text-sm text-slate-400">
-                        <thead className="bg-slate-950 text-slate-200 uppercase font-medium">
+                    <table className="w-full text-left text-sm">
+                        <thead className="bg-[#002147] text-white uppercase text-[10px] font-bold tracking-widest">
                             <tr>
-                                <th className="px-6 py-4">Transaction ID</th>
-                                <th className="px-6 py-4">Date</th>
-                                <th className="px-6 py-4">State</th>
-                                <th className="px-6 py-4">District</th>
-                                <th className="px-6 py-4">Type</th>
-                                <th className="px-6 py-4">Status</th>
-                                <th className="px-6 py-4">Integrity</th>
+                                {getColumns().map(col => (
+                                    <th key={col} className="px-6 py-4">{col.replace(/_/g, ' ')}</th>
+                                ))}
                             </tr>
                         </thead>
-                        <tbody className="divide-y divide-slate-800">
+                        <tbody className="divide-y divide-slate-100">
                             {loading ? (
-                                <tr><td colSpan="7" className="px-6 py-8 text-center animate-pulse">Loading secure records...</td></tr>
+                                <tr><td colSpan={getColumns().length} className="px-6 py-20 text-center text-slate-400 italic">Authenticating and retrieving secure records...</td></tr>
+                            ) : error ? (
+                                <tr><td colSpan={getColumns().length} className="px-6 py-20 text-center text-red-500 font-bold">{error}</td></tr>
+                            ) : data.length === 0 ? (
+                                <tr><td colSpan={getColumns().length} className="px-6 py-20 text-center text-slate-400">No records found for the selected dataset.</td></tr>
                             ) : (
-                                data.map((row) => (
-                                    <tr key={row.id} className="hover:bg-slate-800/50 transition-colors">
-                                        <td className="px-6 py-4 font-mono text-blue-400">{row.id}</td>
-                                        <td className="px-6 py-4">{row.date}</td>
-                                        <td className="px-6 py-4">{row.state}</td>
-                                        <td className="px-6 py-4 italic text-slate-600">{row.district}</td>
-                                        <td className="px-6 py-4">{row.enrolment_type}</td>
-                                        <td className="px-6 py-4"><span className="px-2 py-1 rounded-full bg-emerald-900/30 text-emerald-400 text-xs border border-emerald-800">{row.status}</span></td>
-                                        <td className="px-6 py-4">
-                                            <span className={`px-2 py-1 rounded-full text-xs font-bold ${row.integrity_check === 'FLAGGED' ? 'bg-red-900/30 text-red-400 border border-red-800' : 'bg-slate-800 text-slate-500'}`}>
-                                                {row.integrity_check}
-                                            </span>
-                                        </td>
+                                data.map((row, idx) => (
+                                    <tr key={idx} className="hover:bg-slate-50 transition-colors">
+                                        {getColumns().map(col => (
+                                            <td key={col} className={`px-6 py-4 ${col === 'id' ? 'font-mono text-[10px] text-[#c5a059] font-bold' : 'text-slate-600'}`}>
+                                                {row[col] !== undefined ? String(row[col]) : '—'}
+                                            </td>
+                                        ))}
                                     </tr>
                                 ))
                             )}
@@ -86,11 +99,12 @@ const DataExplorer = () => {
                     </table>
                 </div>
 
-                <div className="p-4 border-t border-slate-800 bg-slate-950/50 flex justify-between items-center text-xs text-slate-500">
-                    <div>Showing 20 of 1,006,029 records</div>
-                    <div className="flex space-x-2">
-                        <button className="px-3 py-1 bg-slate-800 rounded hover:bg-slate-700">Previous</button>
-                        <button className="px-3 py-1 bg-slate-800 rounded hover:bg-slate-700">Next</button>
+                <div className="p-6 border-t border-slate-100 bg-slate-50/30 flex justify-between items-center text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+                    <div>Records Loaded: {data.length} (Sample Subset)</div>
+                    <div className="flex gap-4">
+                        <button className="hover:text-[#002147] transition-colors disabled:opacity-30" disabled>Previous Page</button>
+                        <div className="w-px h-4 bg-slate-200"></div>
+                        <button className="hover:text-[#002147] transition-colors disabled:opacity-30" disabled>Next Page</button>
                     </div>
                 </div>
             </div>

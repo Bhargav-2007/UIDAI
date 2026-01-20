@@ -68,7 +68,7 @@ function AfterAnalysis() {
     if (error) {
         return (
             <div className="error-message">
-                <p>⚠️ Error loading analysis: {error}</p>
+                <p>Error loading analysis: {error}</p>
                 <p>Make sure the backend server is running on port 8000</p>
             </div>
         );
@@ -102,13 +102,13 @@ function AfterAnalysis() {
                 marginBottom: '1.5rem',
                 border: '1px solid rgba(59, 130, 246, 0.3)'
             }}>
-                🧠 Analyzed Data with Actionable Intelligence
+                Analyzed Data with Actionable Intelligence
             </div>
 
             {/* Key Metrics with Growth */}
             <section className="section">
                 <div className="section-header">
-                    <div className="section-icon" style={{ background: 'linear-gradient(135deg, #3b82f6, #8b5cf6)' }}>📊</div>
+                    <div className="section-icon" style={{ background: 'linear-gradient(135deg, #3b82f6, #8b5cf6)' }}>KPI</div>
                     <div>
                         <h2 className="section-title">Key Performance Indicators</h2>
                         <p className="section-subtitle">Metrics with trend analysis and growth rates</p>
@@ -150,7 +150,7 @@ function AfterAnalysis() {
             {/* Trend Analysis Charts */}
             <section className="section">
                 <div className="section-header">
-                    <div className="section-icon" style={{ background: 'linear-gradient(135deg, #10b981, #3b82f6)' }}>📈</div>
+                    <div className="section-icon" style={{ background: 'linear-gradient(135deg, #10b981, #3b82f6)' }}>TRD</div>
                     <div>
                         <h2 className="section-title">Trend Analysis</h2>
                         <p className="section-subtitle">Time-series patterns with growth rate visualization</p>
@@ -236,7 +236,7 @@ function AfterAnalysis() {
             {/* Forecast Section */}
             <section className="section">
                 <div className="section-header">
-                    <div className="section-icon" style={{ background: 'linear-gradient(135deg, #10b981, #22d3ee)' }}>🔮</div>
+                    <div className="section-icon" style={{ background: 'linear-gradient(135deg, #10b981, #22d3ee)' }}>FCT</div>
                     <div>
                         <h2 className="section-title">6-Month Forecast</h2>
                         <p className="section-subtitle">Predictive analytics using linear regression</p>
@@ -312,7 +312,7 @@ function AfterAnalysis() {
             {/* Anomaly Detection */}
             <section className="section">
                 <div className="section-header">
-                    <div className="section-icon" style={{ background: 'linear-gradient(135deg, #ef4444, #f59e0b)' }}>⚠️</div>
+                    <div className="section-icon" style={{ background: 'linear-gradient(135deg, #ef4444, #f59e0b)' }}>!]</div>
                     <div>
                         <h2 className="section-title">Anomaly Detection</h2>
                         <p className="section-subtitle">Statistical outliers flagged using Z-score analysis</p>
@@ -353,7 +353,7 @@ function AfterAnalysis() {
             {/* Insights Section */}
             <section className="section">
                 <div className="section-header">
-                    <div className="section-icon" style={{ background: 'linear-gradient(135deg, #8b5cf6, #ec4899)' }}>💡</div>
+                    <div className="section-icon" style={{ background: 'linear-gradient(135deg, #8b5cf6, #ec4899)' }}>INS</div>
                     <div>
                         <h2 className="section-title">Key Insights</h2>
                         <p className="section-subtitle">Interpreted findings with societal significance</p>
@@ -379,7 +379,7 @@ function AfterAnalysis() {
             {/* Policy Implications */}
             <section className="section">
                 <div className="section-header">
-                    <div className="section-icon" style={{ background: 'linear-gradient(135deg, #3b82f6, #10b981)' }}>📜</div>
+                    <div className="section-icon" style={{ background: 'linear-gradient(135deg, #3b82f6, #10b981)' }}>POL</div>
                     <div>
                         <h2 className="section-title">Policy Implications</h2>
                         <p className="section-subtitle">Actionable recommendations for governance</p>

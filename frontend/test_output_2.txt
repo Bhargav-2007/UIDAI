@@ -1,0 +1,571 @@
+
+ RUN  v4.0.17 D:/DELL/Documents/UIDAI/frontend
+
+ ❯ src/pages/ExecutiveSummaryPage.test.tsx (10 tests | 7 failed) 8003ms
+     ✓ Property 6: KPI Display Minimum Count 134ms
+     × Property 7: Before/After Toggle Data Switch 5029ms
+     × Property 8: KPI Label Presence 1462ms
+     × Property 9: KPI Numeric Formatting 254ms
+     ✓ should fetch data on mount 7ms
+     × should render line chart with correct data 9ms
+     × should display at least three KPIs 8ms
+     ✓ should update chart and KPIs when Before/After toggle is changed 77ms
+     × should display error message with retry button when API fails 1016ms
+     × should display loading state while fetching data 5ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 7 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/pages/ExecutiveSummaryPage.test.tsx > ExecutiveSummaryPage Property Tests > Property 7: Before/After Toggle Data Switch
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ src/pages/ExecutiveSummaryPage.test.tsx:92:3
+     90|    * Validates: Requirements 4.5, 13.2, 13.3, 13.4
+     91|    */
+     92|   it('Property 7: Before/After Toggle Data Switch', async () => {
+       |   ^
+     93|     await fc.assert(
+     94|       fc.asyncProperty(
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/7]⎯
+
+ FAIL  src/pages/ExecutiveSummaryPage.test.tsx > ExecutiveSummaryPage Property Tests > Property 8: KPI Label Presence
+Error: Property failed after 1 tests
+{ seed: 198048018, path: "0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0", endOnFailure: true }
+Counterexample: [{"labels":[" "],"datasets":[{"label":" ","data":[0]}],"kpis":[{"label":"  ","value":0,"format":null},{"label":"  ","value":0,"format":null},{"label":"  ","value":0,"format":null}],"chartType":"line","title":" "}]
+Shrunk 23 time(s)
+
+Hint: Enable verbose mode in order to have the list of all failing values encountered during the run
+ ❯ buildError node_modules/fast-check/lib/check/runner/utils/RunDetailsFormatter.js:156:19
+ ❯ asyncThrowIfFailed node_modules/fast-check/lib/check/runner/utils/RunDetailsFormatter.js:170:11
+
+Caused by: AssertionError: expected '' not to be '' // Object.is equality
+ ❯ src/pages/ExecutiveSummaryPage.test.tsx:232:58
+ ❯ src/pages/ExecutiveSummaryPage.test.tsx:230:21
+ ❯ AsyncProperty.run node_modules/fast-check/lib/check/property/AsyncProperty.generic.js:43:28
+ ❯ asyncRunIt node_modules/fast-check/lib/check/runner/Runner.js:24:21
+ ❯ src/pages/ExecutiveSummaryPage.test.tsx:194:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/7]⎯
+
+ FAIL  src/pages/ExecutiveSummaryPage.test.tsx > ExecutiveSummaryPage Property Tests > Property 9: KPI Numeric Formatting
+Error: Property failed after 1 tests
+{ seed: -683383602, path: "0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0", endOnFailure: true }
+Counterexample: [{"labels":[" "],"datasets":[{"label":" ","data":[0]}],"kpis":[{"label":" ","value":0,"format":"number"},{"label":" ","value":0,"format":"number"},{"label":" ","value":0,"format":"number"}],"chartType":"line","title":" "}]
+Shrunk 22 time(s)
+
+Hint: Enable verbose mode in order to have the list of all failing values encountered during the run
+ ❯ buildError node_modules/fast-check/lib/check/runner/utils/RunDetailsFormatter.js:156:19
+ ❯ asyncThrowIfFailed node_modules/fast-check/lib/check/runner/utils/RunDetailsFormatter.js:170:11
+
+Caused by: AssertionError: expected 77 to be 3 // Object.is equality
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- 3[39m
+[31m+ 77[39m
+
+ ❯ src/pages/ExecutiveSummaryPage.test.tsx:281:36
+ ❯ AsyncProperty.run node_modules/fast-check/lib/check/property/AsyncProperty.generic.js:43:28
+ ❯ asyncRunIt node_modules/fast-check/lib/check/runner/Runner.js:24:21
+ ❯ src/pages/ExecutiveSummaryPage.test.tsx:246:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/7]⎯
+
+ FAIL  src/pages/ExecutiveSummaryPage.test.tsx > ExecutiveSummaryPage Unit Tests > should render line chart with correct data
+Error: [2mexpect([22m[31mreceived[39m[2m).toBeInTheDocument()[22m
+
+[31mreceived[39m value must be an HTMLElement or an SVGElement.
+Received has type:  Null
+Received has value: [31mnull[39m
+ ❯ src/pages/ExecutiveSummaryPage.test.tsx:394:28
+    392|     // Verify chart container is present (Chart.js canvas will be rend…
+    393|     const chartContainer = screen.getByText('Executive Summary').close…
+    394|     expect(chartContainer).toBeInTheDocument();
+       |                            ^
+    395|   });
+    396| 
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/7]⎯
+
+ FAIL  src/pages/ExecutiveSummaryPage.test.tsx > ExecutiveSummaryPage Unit Tests > should display at least three KPIs
+TestingLibraryElementError: Unable to find an element with the text: Revenue. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"ml-64 min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-slate-100 p-8"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"max-w-7xl mx-auto"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex justify-between items-center mb-8"[39m
+        [36m>[39m
+          [36m<div>[39m
+            [36m<h1[39m
+              [33mclass[39m=[32m"text-4xl font-bold mb-2"[39m
+            [36m>[39m
+              [0mExecutive Summary[0m
+            [36m</h1>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"text-slate-400"[39m
+            [36m>[39m
+              [0mKey performance indicators and trends overview[0m
+            [36m</p>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex items-center gap-2 mb-4 bg-slate-800 p-2 rounded border border-slate-600 w-fit"[39m
+        [36m>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"px-3 py-1 rounded text-sm font-semibold transition bg-slate-700 text-slate-400 hover:text-slate-100"[39m
+          [36m>[39m
+            [0mBefore[0m
+          [36m</button>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"w-px h-6 bg-slate-600"[39m
+          [36m/>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"px-3 py-1 rounded text-sm font-semibold transition bg-slate-600 text-slate-100"[39m
+          [36m>[39m
+            [0mAfter[0m
+          [36m</button>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"bg-slate-800 border border-slate-600 rounded-lg p-6"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"analytics-chart-container"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"chart-wrapper"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"kpis-section"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"kpi-card"[39m
+                [36m>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"kpi-label"[39m
+                    [33mdata-testid[39m=[32m"kpi-label-0"[39m
+                  [36m>[39m
+                    [0m [0m
+                  [36m</div>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"kpi-value"[39m
+                    [33mdata-testid[39m=[32m"kpi-value-0"[39m
+                  [36m>[39m
+                    [0m0[0m
+                  [36m</div>[39m
+                [36m</div>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"kpi-card"[39m
+                [36m>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"kpi-label"[39m
+                    [33mdata-testid[39m=[32m"kpi-label-1"[39m
+                  [36m>[39m
+                    [0m [0m
+                  [36m</div>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"kpi-value"[39m
+                    [33mdata-testid[39m=[32m"kpi-value-1"[39m
+                  [36m>[39m
+                    [0m0[0m
+                  [36m</div>[39m
+                [36m</div>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"kpi-card"[39m
+                [36m>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"kpi-label"[39m
+                    [33mdata-testid[39m=[32m"kpi-label-2"[39m
+                  [36m>[39m
+                    [0m [0m
+                  [36m</div>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"kpi-value"[39m
+                    [33mdata-testid[39m=[32m"kpi-value-2"[39m
+                  [36m>[39m
+                    [0m0[0m
+                  [36m</div>[39m
+                [36m</div>[39m
+              [36m</div>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"chart-section"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mdata-testid[39m=[32m"line-chart"[39m
+                [36m>[39m
+                  [0mLine Chart[0m
+                [36m</div>[39m
+              [36m</div>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/pages/ExecutiveSummaryPage.test.tsx:429:19
+    427| 
+    428|     // Verify KPI labels are displayed
+    429|     expect(screen.getByText('Revenue')).toBeInTheDocument();
+       |                   ^
+    430|     expect(screen.getByText('Users')).toBeInTheDocument();
+    431|     expect(screen.getByText('Growth')).toBeInTheDocument();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/7]⎯
+
+ FAIL  src/pages/ExecutiveSummaryPage.test.tsx > ExecutiveSummaryPage Unit Tests > should display error message with retry button when API fails
+TestingLibraryElementError: Unable to find an element with the text: Failed to load Executive Summary data. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"ml-64 min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-slate-100 p-8"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"max-w-7xl mx-auto"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex justify-between items-center mb-8"[39m
+        [36m>[39m
+          [36m<div>[39m
+            [36m<h1[39m
+              [33mclass[39m=[32m"text-4xl font-bold mb-2"[39m
+            [36m>[39m
+              [0mExecutive Summary[0m
+            [36m</h1>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"text-slate-400"[39m
+            [36m>[39m
+              [0mKey performance indicators and trends overview[0m
+            [36m</p>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex items-center gap-2 mb-4 bg-slate-800 p-2 rounded border border-slate-600 w-fit"[39m
+        [36m>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"px-3 py-1 rounded text-sm font-semibold transition bg-slate-700 text-slate-400 hover:text-slate-100"[39m
+          [36m>[39m
+            [0mBefore[0m
+          [36m</button>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"w-px h-6 bg-slate-600"[39m
+          [36m/>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"px-3 py-1 rounded text-sm font-semibold transition bg-slate-600 text-slate-100"[39m
+          [36m>[39m
+            [0mAfter[0m
+          [36m</button>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"bg-slate-800 border border-slate-600 rounded-lg p-6"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"analytics-chart-container"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"chart-wrapper"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"kpis-section"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"kpi-card"[39m
+                [36m>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"kpi-label"[39m
+                    [33mdata-testid[39m=[32m"kpi-label-0"[39m
+                  [36m>[39m
+                    [0m [0m
+                  [36m</div>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"kpi-value"[39m
+                    [33mdata-testid[39m=[32m"kpi-value-0"[39m
+                  [36m>[39m
+                    [0m0[0m
+                  [36m</div>[39m
+                [36m</div>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"kpi-card"[39m
+                [36m>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"kpi-label"[39m
+                    [33mdata-testid[39m=[32m"kpi-label-1"[39m
+                  [36m>[39m
+                    [0m [0m
+                  [36m</div>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"kpi-value"[39m
+                    [33mdata-testid[39m=[32m"kpi-value-1"[39m
+                  [36m>[39m
+                    [0m0[0m
+                  [36m</div>[39m
+                [36m</div>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"kpi-card"[39m
+                [36m>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"kpi-label"[39m
+                    [33mdata-testid[39m=[32m"kpi-label-2"[39m
+                  [36m>[39m
+                    [0m [0m
+                  [36m</div>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"kpi-value"[39m
+                    [33mdata-testid[39m=[32m"kpi-value-2"[39m
+                  [36m>[39m
+                    [0m0[0m
+                  [36m</div>[39m
+                [36m</div>[39m
+              [36m</div>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"chart-section"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mdata-testid[39m=[32m"line-chart"[39m
+                [36m>[39m
+                  [0mLine Chart[0m
+                [36m</div>[39m
+              [36m</div>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<html>[39m
+  [36m<head />[39m
+  [36m<body>[39m
+    [36m<div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"ml-64 min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-slate-100 p-8"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"max-w-7xl mx-auto"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"flex justify-between items-center mb-8"[39m
+          [36m>[39m
+            [36m<div>[39m
+              [36m<h1[39m
+                [33mclass[39m=[32m"text-4xl font-bold mb-2"[39m
+              [36m>[39m
+                [0mExecutive Summary[0m
+              [36m</h1>[39m
+              [36m<p[39m
+                [33mclass[39m=[32m"text-slate-400"[39m
+              [36m>[39m
+                [0mKey performance indicators and trends overview[0m
+              [36m</p>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"flex items-center gap-2 mb-4 bg-slate-800 p-2 rounded border border-slate-600 w-fit"[39m
+          [36m>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"px-3 py-1 rounded text-sm font-semibold transition bg-slate-700 text-slate-400 hover:text-slate-100"[39m
+            [36m>[39m
+              [0mBefore[0m
+            [36m</button>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"w-px h-6 bg-slate-600"[39m
+            [36m/>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"px-3 py-1 rounded text-sm font-semibold transition bg-slate-600 text-slate-100"[39m
+            [36m>[39m
+              [0mAfter[0m
+            [36m</button>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"bg-slate-800 border border-slate-600 rounded-lg p-6"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"analytics-chart-container"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"chart-wrapper"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"kpis-section"[39m
+                [36m>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"kpi-card"[39m
+                  [36m>[39m
+                    [36m<div[39m
+                      [33mclass[39m=[32m"kpi-label"[39m
+                      [33mdata-testid[39m=[32m"kpi-label-0"[39m
+                    [36m>[39m
+                      [0m [0m
+                    [36m</div>[39m
+                    [36m<div[39m
+                      [33mclass[39m=[32m"kpi-value"[39m
+                      [33mdata-testid[39m=[32m"kpi-value-0"[39m
+                    [36m>[39m
+                      [0m0[0m
+                    [36m</div>[39m
+                  [36m</div>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"kpi-card"[39m
+                  [36m>[39m
+                    [36m<div[39m
+                      [33mclass[39m=[32m"kpi-label"[39m
+                      [33mdata-testid[39m=[32m"kpi-label-1"[39m
+                    [36m>[39m
+                      [0m [0m
+                    [36m</div>[39m
+                    [36m<div[39m
+                      [33mclass[39m=[32m"kpi-value"[39m
+                      [33mdata-testid[39m=[32m"kpi-value-1"[39m
+                    [36m>[39m
+                      [0m0[0m
+                    [36m</div>[39m
+                  [36m</div>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"kpi-card"[39m
+                  [36m>[39m
+                    [36m<div[39m
+                      [33mclass[39m=[32m"kpi-label"[39m
+                      [33mdata-testid[39m=[32m"kpi-label-2"[39m
+                    [36m>[39m
+                      [0m [0m
+                    [36m</div>[39m
+                    [36m<div[39m
+                      [33mclass[39m=[32m"kpi-value"[39m
+                      [33mdata-testid[39m=[32m"kpi-value-2"[39m
+                    [36m>[39m
+                      [0m0[0m
+                    [36m</div>[39m
+                  [36m</div>[39m
+                [36m</div>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"chart-section"[39m
+                [36m>[39m
+                  [36m<div[39m
+                    [33mdata-testid[39m=[32m"line-chart"[39m
+                  [36m>[39m
+                    [0mLine Chart[0m
+                  [36m</div>[39m
+                [36m</div>[39m
+              [36m</div>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</body>[39m
+[36m</html>[39m
+ ❯ Proxy.waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ src/pages/ExecutiveSummaryPage.test.tsx:514:11
+    512| 
+    513|     // Wait for error to be displayed
+    514|     await waitFor(() => {
+       |           ^
+    515|       expect(screen.getByText(errorMessage)).toBeInTheDocument();
+    516|     });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/7]⎯
+
+ FAIL  src/pages/ExecutiveSummaryPage.test.tsx > ExecutiveSummaryPage Unit Tests > should display loading state while fetching data
+TestingLibraryElementError: Unable to find an element with the text: Loading chart data.... This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"ml-64 min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-slate-100 p-8"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"max-w-7xl mx-auto"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex justify-between items-center mb-8"[39m
+        [36m>[39m
+          [36m<div>[39m
+            [36m<h1[39m
+              [33mclass[39m=[32m"text-4xl font-bold mb-2"[39m
+            [36m>[39m
+              [0mExecutive Summary[0m
+            [36m</h1>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"text-slate-400"[39m
+            [36m>[39m
+              [0mKey performance indicators and trends overview[0m
+            [36m</p>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex items-center gap-2 mb-4 bg-slate-800 p-2 rounded border border-slate-600 w-fit"[39m
+        [36m>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"px-3 py-1 rounded text-sm font-semibold transition bg-slate-700 text-slate-400 hover:text-slate-100"[39m
+          [36m>[39m
+            [0mBefore[0m
+          [36m</button>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"w-px h-6 bg-slate-600"[39m
+          [36m/>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"px-3 py-1 rounded text-sm font-semibold transition bg-slate-600 text-slate-100"[39m
+          [36m>[39m
+            [0mAfter[0m
+          [36m</button>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"bg-slate-800 border border-slate-600 rounded-lg p-6"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"analytics-chart-container error-state"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"error-message"[39m
+            [36m>[39m
+              [36m<p>[39m
+                [0mInvalid chart data provided[0m
+              [36m</p>[39m
+              [36m<button[39m
+                [33mclass[39m=[32m"retry-button"[39m
+              [36m>[39m
+                [0mRetry[0m
+              [36m</button>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/pages/ExecutiveSummaryPage.test.tsx:566:19
+    564| 
+    565|     // Verify loading state is displayed
+    566|     expect(screen.getByText('Loading chart data...')).toBeInTheDocumen…
+       |                   ^
+    567| 
+    568|     // Resolve the promise
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/7]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  7 failed | 3 passed (10)
+   Start at  16:28:21
+   Duration  12.54s (transform 271ms, setup 389ms, import 1.37s, tests 8.00s, environment 2.43s)
+

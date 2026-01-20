@@ -1,68 +1,39 @@
 /* 
  * Aadhaar Enrolment & Update Insight Platform
- * Premium Dark Theme with Before/After Visual Differentiation
+ * Formal & Classical Theme for Government/Enterprise Analytics
  */
 
-/* ===== CSS Variables ===== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap');
+
 :root {
-  /* Base colors */
-  --bg-primary: #0a0a0f;
-  --bg-secondary: #12121a;
-  --bg-card: #1a1a25;
-  --bg-card-hover: #22222f;
-  
-  /* Text colors */
-  --text-primary: #ffffff;
-  --text-secondary: #a0a0b0;
-  --text-muted: #606070;
-  
-  /* Accent colors */
-  --accent-blue: #3b82f6;
-  --accent-green: #10b981;
-  --accent-purple: #8b5cf6;
-  --accent-orange: #f59e0b;
-  --accent-red: #ef4444;
-  
-  /* Gradients */
-  --gradient-primary: linear-gradient(135deg, #3b82f6, #8b5cf6);
-  --gradient-success: linear-gradient(135deg, #10b981, #3b82f6);
-  --gradient-warning: linear-gradient(135deg, #f59e0b, #ef4444);
-  
-  /* Before theme (grey/neutral) */
-  --before-bg: #1f1f24;
-  --before-card: #28282f;
-  --before-accent: #6b7280;
-  --before-text: #9ca3af;
-  
-  /* After theme (blue/green analytical) */
-  --after-bg: #0f172a;
-  --after-card: #1e293b;
-  --after-accent: #22d3ee;
-  --after-text: #e0f2fe;
-  
-  /* Shadows */
-  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
-  --shadow-glow: 0 0 20px rgba(59, 130, 246, 0.3);
-  
-  /* Spacing */
-  --spacing-xs: 0.25rem;
-  --spacing-sm: 0.5rem;
-  --spacing-md: 1rem;
-  --spacing-lg: 1.5rem;
-  --spacing-xl: 2rem;
-  
-  /* Border radius */
-  --radius-sm: 0.375rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 0.75rem;
-  --radius-xl: 1rem;
-  
-  /* Transitions */
-  --transition-fast: 0.15s ease;
-  --transition-normal: 0.3s ease;
-  --transition-slow: 0.5s ease;
+  /* Classical Color Palette */
+  --color-oxford-blue: #002147;
+  --color-gold: #c5a059;
+  --color-off-white: #fcfaf5;
+  --color-slate-gray: #708090;
+  --color-charcoal: #36454f;
+
+  /* Semantic Variables */
+  --bg-app: var(--color-off-white);
+  --bg-sidebar: var(--color-oxford-blue);
+  --bg-header: #ffffff;
+  --bg-card: #ffffff;
+
+  --text-main: var(--color-charcoal);
+  --text-heading: var(--color-oxford-blue);
+  --text-accent: var(--color-gold);
+  --text-on-sidebar: #ffffff;
+
+  --border-formal: 1px solid rgba(0, 33, 71, 0.1);
+  --shadow-formal: 0 4px 12px rgba(0, 33, 71, 0.05);
+
+  --font-serif: 'Playfair Display', serif;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+
+  /* Spacing & Radius */
+  --spacing-unit: 1rem;
+  --radius-formal: 0.25rem;
+  /* More rigid/formal than large rounded corners */
 }
 
 /* ===== Global Styles ===== */
@@ -78,13 +49,23 @@ html {
 }
 
 body {
-  font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
-  background: var(--bg-primary);
-  color: var(--text-primary);
+  font-family: var(--font-sans);
+  background: var(--bg-app);
+  color: var(--text-main);
   line-height: 1.6;
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-serif);
+  color: var(--text-heading);
 }
 
 #root {
@@ -94,15 +75,8 @@ body {
 /* ===== App Container ===== */
 .app {
   min-height: 100vh;
-  transition: background var(--transition-normal);
-}
-
-.app.before-mode {
-  background: linear-gradient(180deg, var(--before-bg) 0%, #141418 100%);
-}
-
-.app.after-mode {
-  background: linear-gradient(180deg, var(--after-bg) 0%, #020617 100%);
+  display: flex;
+  flex-direction: column;
 }
 
 /* ===== Header ===== */
@@ -653,20 +627,20 @@ body {
     flex-direction: column;
     text-align: center;
   }
-  
+
   .header h1 {
     font-size: 1.25rem;
   }
-  
+
   .charts-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .difference-grid {
     grid-template-columns: 1fr;
     gap: var(--spacing-lg);
   }
-  
+
   .stats-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -676,7 +650,7 @@ body {
   .stats-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .main-content {
     padding: var(--spacing-md);
   }
@@ -692,6 +666,7 @@ body {
     opacity: 0;
     transform: translateY(10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -707,6 +682,7 @@ body {
     opacity: 0;
     transform: translateX(-20px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);

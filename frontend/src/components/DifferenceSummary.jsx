@@ -29,12 +29,12 @@ function DifferenceSummary() {
     return (
         <div className="difference-panel">
             <h3 className="difference-title">
-                <span>⚖️</span> Before vs After: Analysis Comparison
+                Before vs After: Analysis Comparison
             </h3>
 
             <div className="difference-grid">
                 <div className="difference-column before">
-                    <h4>📊 Before Analysis</h4>
+                    <h4>Before Analysis</h4>
                     <ul className="difference-list">
                         {beforePoints.map((point, idx) => (
                             <li key={idx}>{point}</li>
@@ -43,7 +43,7 @@ function DifferenceSummary() {
                 </div>
 
                 <div className="difference-column after">
-                    <h4>🧠 After Analysis</h4>
+                    <h4>After Analysis</h4>
                     <ul className="difference-list">
                         {afterPoints.map((point, idx) => (
                             <li key={idx} style={{ color: '#e0f2fe' }}>{point}</li>

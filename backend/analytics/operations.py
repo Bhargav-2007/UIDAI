@@ -71,42 +71,42 @@ async def queue_theory_analysis() -> Dict[str, Any]:
     
     return {
         "technique": "Queue Theory (Little's Law)",
-        "description": "Analyzes system throughput using queuing theory. Little's Law states L = λW, connecting average queue length (L), arrival rate (λ), and wait time (W).",
-        "formula": "L = λW | ρ = λ/μ | W = 1/(μ-λ) for M/M/1 queue",
+        "description": "Analyzes system throughput using queuing theory. Little's Law states L = lambda*W, connecting average queue length (L), arrival rate (lambda), and wait time (W).",
+        "formula": "L = lambda*W | rho = lambda/mu | W = 1/(mu-lambda) for M/M/1 queue",
         "calculation_steps": [
             {
                 "step": 1,
                 "title": "Calculate Arrival Rate (λ)",
                 "description": "Average number of enrolments per day",
                 "input": f"{len(daily_totals)} days of data",
-                "output": f"λ = {lambda_rate:,.0f} enrolments/day"
+                "output": f"lambda = {lambda_rate:,.0f} enrolments/day"
             },
             {
                 "step": 2,
-                "title": "Estimate Processing Capacity (μ)",
+                "title": "Estimate Processing Capacity (mu)",
                 "description": "Based on maximum observed throughput + 10% buffer",
                 "input": f"Max daily: {max_daily:,.0f}",
-                "output": f"μ = {processing_capacity:,.0f} enrolments/day"
+                "output": f"mu = {processing_capacity:,.0f} enrolments/day"
             },
             {
                 "step": 3,
-                "title": "Calculate Utilization (ρ)",
-                "description": "ρ = λ/μ (proportion of capacity used)",
-                "input": f"λ = {lambda_rate:,.0f}, μ = {processing_capacity:,.0f}",
-                "output": f"ρ = {utilization:.2%}"
+                "title": "Calculate Utilization (rho)",
+                "description": "rho = lambda/mu (proportion of capacity used)",
+                "input": f"lambda = {lambda_rate:,.0f}, mu = {processing_capacity:,.0f}",
+                "output": f"rho = {utilization:.2%}"
             },
             {
                 "step": 4,
                 "title": "Calculate Average Wait Factor",
-                "description": "W = 1/(μ-λ) for M/M/1 queue model",
-                "input": f"μ - λ = {processing_capacity - lambda_rate:,.0f}",
+                "description": "W = 1/(mu-lambda) for M/M/1 queue model",
+                "input": f"mu - lambda = {processing_capacity - lambda_rate:,.0f}",
                 "output": f"W factor = {avg_wait_factor:.6f}" if avg_wait_factor != float('inf') else "System overloaded"
             },
             {
                 "step": 5,
                 "title": "Apply Little's Law",
-                "description": "L = λW (Average queue length)",
-                "input": f"λ = {lambda_rate:,.0f}, W = {avg_wait_factor:.6f}" if avg_wait_factor != float('inf') else "N/A",
+                "description": "L = lambda*W (Average queue length)",
+                "input": f"lambda = {lambda_rate:,.0f}, W = {avg_wait_factor:.6f}" if avg_wait_factor != float('inf') else "N/A",
                 "output": f"L = {avg_queue_length:,.0f}" if avg_queue_length != float('inf') else "Infinite backlog"
             }
         ],
@@ -115,12 +115,16 @@ async def queue_theory_analysis() -> Dict[str, Any]:
             "total_enrolments": int(daily_totals['total_enrolments'].sum()),
             "min_daily": int(daily_totals['total_enrolments'].min()),
             "max_daily": int(max_daily),
-            "std_daily": round(daily_totals['total_enrolments'].std(), 2)
+            "std_daily": round(daily_totals['total_enrolments'].std(), 2),
+            "service_intensity": round(lambda_rate / processing_capacity, 4) if processing_capacity > 0 else 0
         },
         "final_result": {
             "arrival_rate_lambda": round(lambda_rate, 2),
             "processing_capacity_mu": round(processing_capacity, 2),
             "utilization_rho": round(utilization, 4),
+            "prob_queue_p1": round(utilization ** 2, 4), # Simplified M/M/1
+            "avg_wait_time_wq": round(avg_wait_factor if avg_wait_factor != float('inf') else 999, 4),
+            "avg_queue_length_lq": round(avg_queue_length if avg_queue_length != float('inf') else 999, 4),
             "bottleneck_states": len(bottlenecks)
         },
         "risk_classification": risk,

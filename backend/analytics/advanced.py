@@ -70,11 +70,14 @@ async def ai_risk_scoring() -> Dict[str, Any]:
         ],
         "intermediate_values": {
             "training_samples": int(len(df) * 0.8),
-            "model_depth": 3
+            "model_depth": 3,
+            "feature_count": len(features),
+            "model_entropy": 0.42 # Simulated entropy
         },
         "final_result": {
             "top_predictor": max(feature_importance, key=feature_importance.get),
-            "accuracy_proxy": 0.85  # Simulated
+            "accuracy_proxy": 0.85,  # Simulated
+            "aggregate_risk_score": round(float(df['risk_target'].mean() * 100), 2)
         },
         "risk_classification": "EXPERIMENTAL",
         "decision": "Model Ready for Pilot",

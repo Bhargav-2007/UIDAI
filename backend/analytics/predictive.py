@@ -93,7 +93,7 @@ async def time_series_forecast() -> Dict[str, Any]:
     return {
         "technique": "Time Series Forecasting",
         "description": "Decomposes time series into trend and seasonal components, then projects future values using linear regression.",
-        "formula": "Y = Trend + Seasonal + Residual | Trend = α + βt | Forecast = Trend(t+h) + Seasonal(t+h)",
+        "formula": "Y = Trend + Seasonal + Residual | Trend = alpha + beta*t | Forecast = Trend(t+h) + Seasonal(t+h)",
         "calculation_steps": [
             {
                 "step": 1,
@@ -105,16 +105,16 @@ async def time_series_forecast() -> Dict[str, Any]:
             {
                 "step": 2,
                 "title": "Fit Linear Trend",
-                "description": "y = α + βt using ordinary least squares",
+                "description": "y = alpha + beta*t using ordinary least squares",
                 "input": f"t = 0 to {len(monthly)-1}",
-                "output": f"α = {trend_model.intercept_:,.0f}, β = {trend_model.coef_[0]:,.2f}"
+                "output": f"alpha = {trend_model.intercept_:,.0f}, beta = {trend_model.coef_[0]:,.2f}"
             },
             {
                 "step": 3,
                 "title": "Extract Seasonality",
                 "description": "Calculate average residual for each calendar month",
                 "input": "Detrended residuals",
-                "output": f"Seasonal factors for {min(12, len(set(range(len(monthly)) % 12)))} months"
+                "output": f"Seasonal factors for {min(12, len(set([i % 12 for i in range(len(monthly))] )))} months"
             },
             {
                 "step": 4,
@@ -260,14 +260,14 @@ async def regression_analysis() -> Dict[str, Any]:
     return {
         "technique": "Multi-Variable Regression Analysis",
         "description": "Analyzes the relationship between input variables (age groups) and outcome (total enrolments) using ordinary least squares regression.",
-        "formula": "y = β₀ + β₁x₁ + β₂x₂ + ... + βₙxₙ + ε | R² = 1 - (SS_res / SS_tot)",
+        "formula": "y = beta0 + beta1*x1 + beta2*x2 + ... + betan*xn + epsilon | R2 = 1 - (SS_res / SS_tot)",
         "calculation_steps": [
             {
                 "step": 1,
                 "title": "Prepare Feature Matrix",
                 "description": "Select and aggregate independent variables by state",
                 "input": f"Features: {feature_cols}",
-                "output": f"Matrix shape: {state_agg.shape[0]} states × {len(feature_cols)} features"
+                "output": f"Matrix shape: {state_agg.shape[0]} states x {len(feature_cols)} features"
             },
             {
                 "step": 2,
@@ -279,7 +279,7 @@ async def regression_analysis() -> Dict[str, Any]:
             {
                 "step": 3,
                 "title": "Calculate Coefficients",
-                "description": "β values for each feature",
+                "description": "beta values for each feature",
                 "input": "Model parameters",
                 "output": {col: f"{coef:.4f}" for col, coef in coefficients.items()}
             },
@@ -421,7 +421,7 @@ async def scenario_planning() -> Dict[str, Any]:
     return {
         "technique": "Scenario Planning",
         "description": "Projects future outcomes under different growth assumptions based on historical volatility. Helps decision-makers prepare for multiple possible futures.",
-        "formula": "Projected(t) = Current × (1 + growth_rate)^t | Scenarios: μ±σ, μ±2σ",
+        "formula": "Projected(t) = Current x (1 + growth_rate)^t | Scenarios: mean +/- std, mean +/- 2*std",
         "calculation_steps": [
             {
                 "step": 1,
@@ -440,7 +440,7 @@ async def scenario_planning() -> Dict[str, Any]:
             {
                 "step": 3,
                 "title": "Define Scenarios",
-                "description": "Create growth assumptions at μ, μ±σ, μ+2σ",
+                "description": "Create growth assumptions at mean, mean +/- std, mean + 2*std",
                 "input": "Historical statistics",
                 "output": f"4 scenarios defined"
             },
@@ -568,7 +568,7 @@ async def survival_analysis() -> Dict[str, Any]:
     return {
         "technique": "Survival Analysis",
         "description": "Analyzes time-to-event patterns, specifically how long it takes for regions to start processing updates after enrolments begin. Uses Kaplan-Meier survival estimation.",
-        "formula": "S(t) = Π(1 - dᵢ/nᵢ) for all tᵢ ≤ t | Hazard h(t) = d(t)/n(t)",
+        "formula": "S(t) = Product(1 - di/ni) for all ti <= t | Hazard h(t) = d(t)/n(t)",
         "calculation_steps": [
             {
                 "step": 1,

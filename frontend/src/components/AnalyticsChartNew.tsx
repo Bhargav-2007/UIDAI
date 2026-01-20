@@ -53,19 +53,12 @@ export const AnalyticsChart: React.FC<AnalyticsChartProps> = ({
   error,
   onRetry,
 }) => {
-  // Validate data
-  if (!data || !data.labels || !data.datasets || 
-      !Array.isArray(data.labels) || !Array.isArray(data.datasets) ||
-      data.labels.length === 0 || data.datasets.length === 0) {
+  // Handle loading state
+  if (isLoading) {
     return (
-      <div className="analytics-chart-container error-state">
-        <div className="error-message">
-          <p>Invalid chart data provided</p>
-          {onRetry && (
-            <button onClick={onRetry} className="retry-button">
-              Retry
-            </button>
-          )}
+      <div className="analytics-chart-container loading-state">
+        <div className="loading-indicator">
+          <p>Loading chart data...</p>
         </div>
       </div>
     );
@@ -87,12 +80,19 @@ export const AnalyticsChart: React.FC<AnalyticsChartProps> = ({
     );
   }
 
-  // Handle loading state
-  if (isLoading) {
+  // Validate data
+  if (!data || !data.labels || !data.datasets ||
+    !Array.isArray(data.labels) || !Array.isArray(data.datasets) ||
+    data.labels.length === 0 || data.datasets.length === 0) {
     return (
-      <div className="analytics-chart-container loading-state">
-        <div className="loading-indicator">
-          <p>Loading chart data...</p>
+      <div className="analytics-chart-container error-state">
+        <div className="error-message">
+          <p>Invalid chart data provided</p>
+          {onRetry && (
+            <button onClick={onRetry} className="retry-button">
+              Retry
+            </button>
+          )}
         </div>
       </div>
     );

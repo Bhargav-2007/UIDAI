@@ -1,0 +1,1153 @@
+
+ RUN  v4.0.17 D:/DELL/Documents/UIDAI/frontend
+
+stderr | src/pages/ExecutiveSummaryPage.test.tsx > ExecutiveSummaryPage Unit Tests > should display loading state while fetching data
+An update to ExecutiveSummaryPage inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+An update to ExecutiveSummaryPage inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+ ❯ src/pages/ExecutiveSummaryPage.test.tsx (10 tests | 8 failed) 3370ms
+     × Property 6: KPI Display Minimum Count 532ms
+     × Property 7: Before/After Toggle Data Switch 916ms
+     × Property 8: KPI Label Presence 370ms
+     × Property 9: KPI Numeric Formatting 255ms
+     ✓ should fetch data on mount 7ms
+     × should render line chart with correct data 8ms
+     × should display at least three KPIs 5ms
+     ✓ should update chart and KPIs when Before/After toggle is changed 240ms
+     × should display error message with retry button when API fails 1019ms
+     × should display loading state while fetching data 15ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 8 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/pages/ExecutiveSummaryPage.test.tsx > ExecutiveSummaryPage Property Tests > Property 6: KPI Display Minimum Count
+Error: Property failed after 1 tests
+{ seed: -814184543, path: "0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0", endOnFailure: true }
+Counterexample: [{"labels":[" "],"datasets":[{"label":" ","data":[0],"borderColor":null,"backgroundColor":null}],"kpis":[{"label":" ","value":0,"format":null},{"label":" ","value":" ","format":null},{"label":" ","value":0,"format":null}],"chartType":"line","title":" "}]
+Shrunk 24 time(s)
+
+Hint: Enable verbose mode in order to have the list of all failing values encountered during the run
+ ❯ buildError node_modules/fast-check/lib/check/runner/utils/RunDetailsFormatter.js:156:19
+ ❯ asyncThrowIfFailed node_modules/fast-check/lib/check/runner/utils/RunDetailsFormatter.js:170:11
+
+Caused by: TestingLibraryElementError: Unable to find an element by: [data-testid="/^kpi-label-/"]
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"ml-64 min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-slate-100 p-8"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"max-w-7xl mx-auto"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex justify-between items-center mb-8"[39m
+        [36m>[39m
+          [36m<div>[39m
+            [36m<h1[39m
+              [33mclass[39m=[32m"text-4xl font-bold mb-2"[39m
+            [36m>[39m
+              [0mExecutive Summary[0m
+            [36m</h1>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"text-slate-400"[39m
+            [36m>[39m
+              [0mKey performance indicators and trends overview[0m
+            [36m</p>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex items-center gap-2 mb-4 bg-slate-800 p-2 rounded border border-slate-600 w-fit"[39m
+        [36m>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"px-3 py-1 rounded text-sm font-semibold transition bg-slate-700 text-slate-400 hover:text-slate-100"[39m
+          [36m>[39m
+            [0mBefore[0m
+          [36m</button>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"w-px h-6 bg-slate-600"[39m
+          [36m/>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"px-3 py-1 rounded text-sm font-semibold transition bg-slate-600 text-slate-100"[39m
+          [36m>[39m
+            [0mAfter[0m
+          [36m</button>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"bg-slate-800 border border-slate-600 rounded-lg p-6"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mstyle[39m=[32m"position: relative; height: 300px; width: 100%;"[39m
+          [36m>[39m
+            [36m<p>[39m
+              [0mUnsupported chart type: [0m
+            [36m</p>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"ml-64 min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-slate-100 p-8"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"max-w-7xl mx-auto"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex justify-between items-center mb-8"[39m
+        [36m>[39m
+          [36m<div>[39m
+            [36m<h1[39m
+              [33mclass[39m=[32m"text-4xl font-bold mb-2"[39m
+            [36m>[39m
+              [0mExecutive Summary[0m
+            [36m</h1>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"text-slate-400"[39m
+            [36m>[39m
+              [0mKey performance indicators and trends overview[0m
+            [36m</p>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex items-center gap-2 mb-4 bg-slate-800 p-2 rounded border border-slate-600 w-fit"[39m
+        [36m>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"px-3 py-1 rounded text-sm font-semibold transition bg-slate-700 text-slate-400 hover:text-slate-100"[39m
+          [36m>[39m
+            [0mBefore[0m
+          [36m</button>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"w-px h-6 bg-slate-600"[39m
+          [36m/>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"px-3 py-1 rounded text-sm font-semibold transition bg-slate-600 text-slate-100"[39m
+          [36m>[39m
+            [0mAfter[0m
+          [36m</button>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"bg-slate-800 border border-slate-600 rounded-lg p-6"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mstyle[39m=[32m"position: relative; height: 300px; width: 100%;"[39m
+          [36m>[39m
+            [36m<p>[39m
+              [0mUnsupported chart type: [0m
+            [36m</p>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"ml-64 min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-slate-100 p-8"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"max-w-7xl mx-auto"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex justify-between items-center mb-8"[39m
+        [36m>[39m
+          [36m<div>[39m
+            [36m<h1[39m
+              [33mclass[39m=[32m"text-4xl font-bold mb-2"[39m
+            [36m>[39m
+              [0mExecutive Summary[0m
+            [36m</h1>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"text-slate-400"[39m
+            [36m>[39m
+              [0mKey performance indicators and trends overview[0m
+            [36m</p>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex items-center gap-2 mb-4 bg-slate-800 p-2 rounded border border-slate-600 w-fit"[39m
+        [36m>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"px-3 py-1 rounded text-sm font-semibold transition bg-slate-700 text-slate-400 hover:text-slate-100"[39m
+          [36m>[39m
+            [0mBefore[0m
+          [36m</button>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"w-px h-6 bg-slate-600"[39m
+          [36m/>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"px-3 py-1 rounded text-sm font-semibold transition bg-slate-600 text-slate-100"[39m
+          [36m>[39m
+            [0mAfter[0m
+          [36m</button>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"bg-slate-800 border border-slate-600 rounded-lg p-6"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mstyle[39m=[32m"position: relative; height: 300px; width: 100%;"[39m
+          [36m>[39m
+            [36m<p>[39m
+              [0mUnsupported chart type: [0m
+            [36m</p>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"ml-64 min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-slate-100 p-8"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"max-w-7xl mx-auto"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex justify-between items-center mb-8"[39m
+        [36m>[39m
+          [36m<div>[39m
+            [36m<h1[39m
+              [33mclass[39m=[32m"text-4xl font-bold mb-2"[39m
+            [36m>[39m
+              [0mExecutive Summary[0m
+            [36m</h1>[39m
+            [36m<p[39m...
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:109:15
+ ❯ src/pages/ExecutiveSummaryPage.test.tsx:70:38
+ ❯ AsyncProperty.run node_modules/fast-check/lib/check/property/AsyncProperty.generic.js:43:28
+ ❯ asyncRunIt node_modules/fast-check/lib/check/runner/Runner.js:24:21
+ ❯ src/pages/ExecutiveSummaryPage.test.tsx:33:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/8]⎯
+
+ FAIL  src/pages/ExecutiveSummaryPage.test.tsx > ExecutiveSummaryPage Property Tests > Property 7: Before/After Toggle Data Switch
+Error: Property failed after 1 tests
+{ seed: 1639721894, path: "0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:1:0:0:0:0:0:0", endOnFailure: true }
+Counterexample: [[{"labels":[" "],"datasets":[{"label":" ","data":[0]}],"kpis":[{"label":" ","value":0,"format":null},{"label":" ","value":0,"format":null},{"label":" ","value":0,"format":null}],"chartType":"line","title":" "},{"labels":[" "],"datasets":[{"label":" ","data":[0]}],"kpis":[{"label":" ","value":0,"format":null},{"label":" ","value":0,"format":null},{"label":" ","value":0,"format":null}],"chartType":"line","title":"!"}]]
+Shrunk 48 time(s)
+
+Hint: Enable verbose mode in order to have the list of all failing values encountered during the run
+ ❯ buildError node_modules/fast-check/lib/check/runner/utils/RunDetailsFormatter.js:156:19
+ ❯ asyncThrowIfFailed node_modules/fast-check/lib/check/runner/utils/RunDetailsFormatter.js:170:11
+
+Caused by: TestingLibraryElementError: Unable to find an element by: [data-testid="/^kpi-value-/"]
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"ml-64 min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-slate-100 p-8"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"max-w-7xl mx-auto"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex justify-between items-center mb-8"[39m
+        [36m>[39m
+          [36m<div>[39m
+            [36m<h1[39m
+              [33mclass[39m=[32m"text-4xl font-bold mb-2"[39m
+            [36m>[39m
+              [0mExecutive Summary[0m
+            [36m</h1>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"text-slate-400"[39m
+            [36m>[39m
+              [0mKey performance indicators and trends overview[0m
+            [36m</p>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex items-center gap-2 mb-4 bg-slate-800 p-2 rounded border border-slate-600 w-fit"[39m
+        [36m>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"px-3 py-1 rounded text-sm font-semibold transition bg-slate-700 text-slate-400 hover:text-slate-100"[39m
+          [36m>[39m
+            [0mBefore[0m
+          [36m</button>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"w-px h-6 bg-slate-600"[39m
+          [36m/>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"px-3 py-1 rounded text-sm font-semibold transition bg-slate-600 text-slate-100"[39m
+          [36m>[39m
+            [0mAfter[0m
+          [36m</button>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"bg-slate-800 border border-slate-600 rounded-lg p-6"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mstyle[39m=[32m"position: relative; height: 300px; width: 100%;"[39m
+          [36m>[39m
+            [36m<p>[39m
+              [0mUnsupported chart type: [0m
+            [36m</p>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"ml-64 min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-slate-100 p-8"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"max-w-7xl mx-auto"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex justify-between items-center mb-8"[39m
+        [36m>[39m
+          [36m<div>[39m
+            [36m<h1[39m
+              [33mclass[39m=[32m"text-4xl font-bold mb-2"[39m
+            [36m>[39m
+              [0mExecutive Summary[0m
+            [36m</h1>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"text-slate-400"[39m
+            [36m>[39m
+              [0mKey performance indicators and trends overview[0m
+            [36m</p>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex items-center gap-2 mb-4 bg-slate-800 p-2 rounded border border-slate-600 w-fit"[39m
+        [36m>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"px-3 py-1 rounded text-sm font-semibold transition bg-slate-700 text-slate-400 hover:text-slate-100"[39m
+          [36m>[39m
+            [0mBefore[0m
+          [36m</button>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"w-px h-6 bg-slate-600"[39m
+          [36m/>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"px-3 py-1 rounded text-sm font-semibold transition bg-slate-600 text-slate-100"[39m
+          [36m>[39m
+            [0mAfter[0m
+          [36m</button>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"bg-slate-800 border border-slate-600 rounded-lg p-6"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mstyle[39m=[32m"position: relative; height: 300px; width: 100%;"[39m
+          [36m>[39m
+            [36m<p>[39m
+              [0mUnsupported chart type: [0m
+            [36m</p>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"ml-64 min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-slate-100 p-8"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"max-w-7xl mx-auto"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex justify-between items-center mb-8"[39m
+        [36m>[39m
+          [36m<div>[39m
+            [36m<h1[39m
+              [33mclass[39m=[32m"text-4xl font-bold mb-2"[39m
+            [36m>[39m
+              [0mExecutive Summary[0m
+            [36m</h1>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"text-slate-400"[39m
+            [36m>[39m
+              [0mKey performance indicators and trends overview[0m
+            [36m</p>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex items-center gap-2 mb-4 bg-slate-800 p-2 rounded border border-slate-600 w-fit"[39m
+        [36m>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"px-3 py-1 rounded text-sm font-semibold transition bg-slate-700 text-slate-400 hover:text-slate-100"[39m
+          [36m>[39m
+            [0mBefore[0m
+          [36m</button>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"w-px h-6 bg-slate-600"[39m
+          [36m/>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"px-3 py-1 rounded text-sm font-semibold transition bg-slate-600 text-slate-100"[39m
+          [36m>[39m
+            [0mAfter[0m
+          [36m</button>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"bg-slate-800 border border-slate-600 rounded-lg p-6"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mstyle[39m=[32m"position: relative; height: 300px; width: 100%;"[39m
+          [36m>[39m
+            [36m<p>[39m
+              [0mUnsupported chart type: [0m
+            [36m</p>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"ml-64 min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-slate-100 p-8"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"max-w-7xl mx-auto"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex justify-between items-center mb-8"[39m
+        [36m>[39m
+          [36m<div>[39m
+            [36m<h1[39m
+              [33mclass[39m=[32m"text-4xl font-bold mb-2"[39m
+            [36m>[39m
+              [0mExecutive Summary[0m
+            [36m</h1>[39m
+            [36m<p[39m...
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:109:15
+ ❯ src/pages/ExecutiveSummaryPage.test.tsx:150:38
+ ❯ AsyncProperty.run node_modules/fast-check/lib/check/property/AsyncProperty.generic.js:43:28
+ ❯ asyncRunIt node_modules/fast-check/lib/check/runner/Runner.js:24:21
+ ❯ src/pages/ExecutiveSummaryPage.test.tsx:84:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/8]⎯
+
+ FAIL  src/pages/ExecutiveSummaryPage.test.tsx > ExecutiveSummaryPage Property Tests > Property 8: KPI Label Presence
+Error: Property failed after 1 tests
+{ seed: 989003379, path: "0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0", endOnFailure: true }
+Counterexample: [{"labels":[" "],"datasets":[{"label":" ","data":[0]}],"kpis":[{"label":"  ","value":0,"format":null},{"label":"  ","value":0,"format":null},{"label":"  ","value":" ","format":null}],"chartType":"line","title":" "}]
+Shrunk 27 time(s)
+
+Hint: Enable verbose mode in order to have the list of all failing values encountered during the run
+ ❯ buildError node_modules/fast-check/lib/check/runner/utils/RunDetailsFormatter.js:156:19
+ ❯ asyncThrowIfFailed node_modules/fast-check/lib/check/runner/utils/RunDetailsFormatter.js:170:11
+
+Caused by: TestingLibraryElementError: Unable to find an element by: [data-testid="/^kpi-label-/"]
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"ml-64 min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-slate-100 p-8"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"max-w-7xl mx-auto"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex justify-between items-center mb-8"[39m
+        [36m>[39m
+          [36m<div>[39m
+            [36m<h1[39m
+              [33mclass[39m=[32m"text-4xl font-bold mb-2"[39m
+            [36m>[39m
+              [0mExecutive Summary[0m
+            [36m</h1>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"text-slate-400"[39m
+            [36m>[39m
+              [0mKey performance indicators and trends overview[0m
+            [36m</p>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex items-center gap-2 mb-4 bg-slate-800 p-2 rounded border border-slate-600 w-fit"[39m
+        [36m>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"px-3 py-1 rounded text-sm font-semibold transition bg-slate-700 text-slate-400 hover:text-slate-100"[39m
+          [36m>[39m
+            [0mBefore[0m
+          [36m</button>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"w-px h-6 bg-slate-600"[39m
+          [36m/>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"px-3 py-1 rounded text-sm font-semibold transition bg-slate-600 text-slate-100"[39m
+          [36m>[39m
+            [0mAfter[0m
+          [36m</button>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"bg-slate-800 border border-slate-600 rounded-lg p-6"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mstyle[39m=[32m"position: relative; height: 300px; width: 100%;"[39m
+          [36m>[39m
+            [36m<p>[39m
+              [0mUnsupported chart type: [0m
+            [36m</p>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"ml-64 min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-slate-100 p-8"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"max-w-7xl mx-auto"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex justify-between items-center mb-8"[39m
+        [36m>[39m
+          [36m<div>[39m
+            [36m<h1[39m
+              [33mclass[39m=[32m"text-4xl font-bold mb-2"[39m
+            [36m>[39m
+              [0mExecutive Summary[0m
+            [36m</h1>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"text-slate-400"[39m
+            [36m>[39m
+              [0mKey performance indicators and trends overview[0m
+            [36m</p>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex items-center gap-2 mb-4 bg-slate-800 p-2 rounded border border-slate-600 w-fit"[39m
+        [36m>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"px-3 py-1 rounded text-sm font-semibold transition bg-slate-700 text-slate-400 hover:text-slate-100"[39m
+          [36m>[39m
+            [0mBefore[0m
+          [36m</button>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"w-px h-6 bg-slate-600"[39m
+          [36m/>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"px-3 py-1 rounded text-sm font-semibold transition bg-slate-600 text-slate-100"[39m
+          [36m>[39m
+            [0mAfter[0m
+          [36m</button>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"bg-slate-800 border border-slate-600 rounded-lg p-6"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mstyle[39m=[32m"position: relative; height: 300px; width: 100%;"[39m
+          [36m>[39m
+            [36m<p>[39m
+              [0mUnsupported chart type: [0m
+            [36m</p>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"ml-64 min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-slate-100 p-8"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"max-w-7xl mx-auto"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex justify-between items-center mb-8"[39m
+        [36m>[39m
+          [36m<div>[39m
+            [36m<h1[39m
+              [33mclass[39m=[32m"text-4xl font-bold mb-2"[39m
+            [36m>[39m
+              [0mExecutive Summary[0m
+            [36m</h1>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"text-slate-400"[39m
+            [36m>[39m
+              [0mKey performance indicators and trends overview[0m
+            [36m</p>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex items-center gap-2 mb-4 bg-slate-800 p-2 rounded border border-slate-600 w-fit"[39m
+        [36m>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"px-3 py-1 rounded text-sm font-semibold transition bg-slate-700 text-slate-400 hover:text-slate-100"[39m
+          [36m>[39m
+            [0mBefore[0m
+          [36m</button>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"w-px h-6 bg-slate-600"[39m
+          [36m/>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"px-3 py-1 rounded text-sm font-semibold transition bg-slate-600 text-slate-100"[39m
+          [36m>[39m
+            [0mAfter[0m
+          [36m</button>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"bg-slate-800 border border-slate-600 rounded-lg p-6"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mstyle[39m=[32m"position: relative; height: 300px; width: 100%;"[39m
+          [36m>[39m
+            [36m<p>[39m
+              [0mUnsupported chart type: [0m
+            [36m</p>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"ml-64 min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-slate-100 p-8"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"max-w-7xl mx-auto"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex justify-between items-center mb-8"[39m
+        [36m>[39m
+          [36m<div>[39m
+            [36m<h1[39m
+              [33mclass[39m=[32m"text-4xl font-bold mb-2"[39m
+            [36m>[39m
+              [0mExecutive Summary[0m
+            [36m</h1>[39m
+            [36m<p[39m...
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:109:15
+ ❯ src/pages/ExecutiveSummaryPage.test.tsx:217:36
+ ❯ AsyncProperty.run node_modules/fast-check/lib/check/property/AsyncProperty.generic.js:43:28
+ ❯ asyncRunIt node_modules/fast-check/lib/check/runner/Runner.js:24:21
+ ❯ src/pages/ExecutiveSummaryPage.test.tsx:185:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/8]⎯
+
+ FAIL  src/pages/ExecutiveSummaryPage.test.tsx > ExecutiveSummaryPage Property Tests > Property 9: KPI Numeric Formatting
+Error: Property failed after 1 tests
+{ seed: -878690903, path: "0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0", endOnFailure: true }
+Counterexample: [{"labels":[" "],"datasets":[{"label":" ","data":[0]}],"kpis":[{"label":" ","value":0,"format":"number"},{"label":" ","value":0,"format":"number"},{"label":" ","value":0,"format":"number"}],"chartType":"line","title":" "}]
+Shrunk 23 time(s)
+
+Hint: Enable verbose mode in order to have the list of all failing values encountered during the run
+ ❯ buildError node_modules/fast-check/lib/check/runner/utils/RunDetailsFormatter.js:156:19
+ ❯ asyncThrowIfFailed node_modules/fast-check/lib/check/runner/utils/RunDetailsFormatter.js:170:11
+
+Caused by: TestingLibraryElementError: Unable to find an element by: [data-testid="/^kpi-value-/"]
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"ml-64 min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-slate-100 p-8"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"max-w-7xl mx-auto"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex justify-between items-center mb-8"[39m
+        [36m>[39m
+          [36m<div>[39m
+            [36m<h1[39m
+              [33mclass[39m=[32m"text-4xl font-bold mb-2"[39m
+            [36m>[39m
+              [0mExecutive Summary[0m
+            [36m</h1>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"text-slate-400"[39m
+            [36m>[39m
+              [0mKey performance indicators and trends overview[0m
+            [36m</p>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex items-center gap-2 mb-4 bg-slate-800 p-2 rounded border border-slate-600 w-fit"[39m
+        [36m>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"px-3 py-1 rounded text-sm font-semibold transition bg-slate-700 text-slate-400 hover:text-slate-100"[39m
+          [36m>[39m
+            [0mBefore[0m
+          [36m</button>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"w-px h-6 bg-slate-600"[39m
+          [36m/>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"px-3 py-1 rounded text-sm font-semibold transition bg-slate-600 text-slate-100"[39m
+          [36m>[39m
+            [0mAfter[0m
+          [36m</button>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"bg-slate-800 border border-slate-600 rounded-lg p-6"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mstyle[39m=[32m"position: relative; height: 300px; width: 100%;"[39m
+          [36m>[39m
+            [36m<p>[39m
+              [0mUnsupported chart type: [0m
+            [36m</p>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"ml-64 min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-slate-100 p-8"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"max-w-7xl mx-auto"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex justify-between items-center mb-8"[39m
+        [36m>[39m
+          [36m<div>[39m
+            [36m<h1[39m
+              [33mclass[39m=[32m"text-4xl font-bold mb-2"[39m
+            [36m>[39m
+              [0mExecutive Summary[0m
+            [36m</h1>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"text-slate-400"[39m
+            [36m>[39m
+              [0mKey performance indicators and trends overview[0m
+            [36m</p>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex items-center gap-2 mb-4 bg-slate-800 p-2 rounded border border-slate-600 w-fit"[39m
+        [36m>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"px-3 py-1 rounded text-sm font-semibold transition bg-slate-700 text-slate-400 hover:text-slate-100"[39m
+          [36m>[39m
+            [0mBefore[0m
+          [36m</button>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"w-px h-6 bg-slate-600"[39m
+          [36m/>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"px-3 py-1 rounded text-sm font-semibold transition bg-slate-600 text-slate-100"[39m
+          [36m>[39m
+            [0mAfter[0m
+          [36m</button>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"bg-slate-800 border border-slate-600 rounded-lg p-6"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mstyle[39m=[32m"position: relative; height: 300px; width: 100%;"[39m
+          [36m>[39m
+            [36m<p>[39m
+              [0mUnsupported chart type: [0m
+            [36m</p>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"ml-64 min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-slate-100 p-8"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"max-w-7xl mx-auto"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex justify-between items-center mb-8"[39m
+        [36m>[39m
+          [36m<div>[39m
+            [36m<h1[39m
+              [33mclass[39m=[32m"text-4xl font-bold mb-2"[39m
+            [36m>[39m
+              [0mExecutive Summary[0m
+            [36m</h1>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"text-slate-400"[39m
+            [36m>[39m
+              [0mKey performance indicators and trends overview[0m
+            [36m</p>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex items-center gap-2 mb-4 bg-slate-800 p-2 rounded border border-slate-600 w-fit"[39m
+        [36m>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"px-3 py-1 rounded text-sm font-semibold transition bg-slate-700 text-slate-400 hover:text-slate-100"[39m
+          [36m>[39m
+            [0mBefore[0m
+          [36m</button>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"w-px h-6 bg-slate-600"[39m
+          [36m/>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"px-3 py-1 rounded text-sm font-semibold transition bg-slate-600 text-slate-100"[39m
+          [36m>[39m
+            [0mAfter[0m
+          [36m</button>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"bg-slate-800 border border-slate-600 rounded-lg p-6"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mstyle[39m=[32m"position: relative; height: 300px; width: 100%;"[39m
+          [36m>[39m
+            [36m<p>[39m
+              [0mUnsupported chart type: [0m
+            [36m</p>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"ml-64 min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-slate-100 p-8"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"max-w-7xl mx-auto"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex justify-between items-center mb-8"[39m
+        [36m>[39m
+          [36m<div>[39m
+            [36m<h1[39m
+              [33mclass[39m=[32m"text-4xl font-bold mb-2"[39m
+            [36m>[39m
+              [0mExecutive Summary[0m
+            [36m</h1>[39m
+            [36m<p[39m...
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:109:15
+ ❯ src/pages/ExecutiveSummaryPage.test.tsx:269:36
+ ❯ AsyncProperty.run node_modules/fast-check/lib/check/property/AsyncProperty.generic.js:43:28
+ ❯ asyncRunIt node_modules/fast-check/lib/check/runner/Runner.js:24:21
+ ❯ src/pages/ExecutiveSummaryPage.test.tsx:237:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/8]⎯
+
+ FAIL  src/pages/ExecutiveSummaryPage.test.tsx > ExecutiveSummaryPage Unit Tests > should render line chart with correct data
+Error: [2mexpect([22m[31mreceived[39m[2m).toBeInTheDocument()[22m
+
+[31mreceived[39m value must be an HTMLElement or an SVGElement.
+Received has type:  Null
+Received has value: [31mnull[39m
+ ❯ src/pages/ExecutiveSummaryPage.test.tsx:385:28
+    383|     // Verify chart container is present (Chart.js canvas will be rend…
+    384|     const chartContainer = screen.getByText('Executive Summary').close…
+    385|     expect(chartContainer).toBeInTheDocument();
+       |                            ^
+    386|   });
+    387| 
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/8]⎯
+
+ FAIL  src/pages/ExecutiveSummaryPage.test.tsx > ExecutiveSummaryPage Unit Tests > should display at least three KPIs
+TestingLibraryElementError: Unable to find an element with the text: Revenue. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"ml-64 min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-slate-100 p-8"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"max-w-7xl mx-auto"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex justify-between items-center mb-8"[39m
+        [36m>[39m
+          [36m<div>[39m
+            [36m<h1[39m
+              [33mclass[39m=[32m"text-4xl font-bold mb-2"[39m
+            [36m>[39m
+              [0mExecutive Summary[0m
+            [36m</h1>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"text-slate-400"[39m
+            [36m>[39m
+              [0mKey performance indicators and trends overview[0m
+            [36m</p>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex items-center gap-2 mb-4 bg-slate-800 p-2 rounded border border-slate-600 w-fit"[39m
+        [36m>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"px-3 py-1 rounded text-sm font-semibold transition bg-slate-700 text-slate-400 hover:text-slate-100"[39m
+          [36m>[39m
+            [0mBefore[0m
+          [36m</button>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"w-px h-6 bg-slate-600"[39m
+          [36m/>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"px-3 py-1 rounded text-sm font-semibold transition bg-slate-600 text-slate-100"[39m
+          [36m>[39m
+            [0mAfter[0m
+          [36m</button>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"bg-slate-800 border border-slate-600 rounded-lg p-6"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mstyle[39m=[32m"position: relative; height: 300px; width: 100%;"[39m
+          [36m>[39m
+            [36m<p>[39m
+              [0mUnsupported chart type: [0m
+            [36m</p>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/pages/ExecutiveSummaryPage.test.tsx:420:19
+    418| 
+    419|     // Verify KPI labels are displayed
+    420|     expect(screen.getByText('Revenue')).toBeInTheDocument();
+       |                   ^
+    421|     expect(screen.getByText('Users')).toBeInTheDocument();
+    422|     expect(screen.getByText('Growth')).toBeInTheDocument();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/8]⎯
+
+ FAIL  src/pages/ExecutiveSummaryPage.test.tsx > ExecutiveSummaryPage Unit Tests > should display error message with retry button when API fails
+TestingLibraryElementError: Unable to find an element with the text: Failed to load Executive Summary data. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"ml-64 min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-slate-100 p-8"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"max-w-7xl mx-auto"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex justify-between items-center mb-8"[39m
+        [36m>[39m
+          [36m<div>[39m
+            [36m<h1[39m
+              [33mclass[39m=[32m"text-4xl font-bold mb-2"[39m
+            [36m>[39m
+              [0mExecutive Summary[0m
+            [36m</h1>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"text-slate-400"[39m
+            [36m>[39m
+              [0mKey performance indicators and trends overview[0m
+            [36m</p>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex items-center gap-2 mb-4 bg-slate-800 p-2 rounded border border-slate-600 w-fit"[39m
+        [36m>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"px-3 py-1 rounded text-sm font-semibold transition bg-slate-700 text-slate-400 hover:text-slate-100"[39m
+          [36m>[39m
+            [0mBefore[0m
+          [36m</button>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"w-px h-6 bg-slate-600"[39m
+          [36m/>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"px-3 py-1 rounded text-sm font-semibold transition bg-slate-600 text-slate-100"[39m
+          [36m>[39m
+            [0mAfter[0m
+          [36m</button>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"bg-slate-800 border border-slate-600 rounded-lg p-6"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mstyle[39m=[32m"position: relative; height: 300px; width: 100%;"[39m
+          [36m>[39m
+            [36m<p>[39m
+              [0mUnsupported chart type: [0m
+            [36m</p>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<html>[39m
+  [36m<head />[39m
+  [36m<body>[39m
+    [36m<div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"ml-64 min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-slate-100 p-8"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"max-w-7xl mx-auto"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"flex justify-between items-center mb-8"[39m
+          [36m>[39m
+            [36m<div>[39m
+              [36m<h1[39m
+                [33mclass[39m=[32m"text-4xl font-bold mb-2"[39m
+              [36m>[39m
+                [0mExecutive Summary[0m
+              [36m</h1>[39m
+              [36m<p[39m
+                [33mclass[39m=[32m"text-slate-400"[39m
+              [36m>[39m
+                [0mKey performance indicators and trends overview[0m
+              [36m</p>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"flex items-center gap-2 mb-4 bg-slate-800 p-2 rounded border border-slate-600 w-fit"[39m
+          [36m>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"px-3 py-1 rounded text-sm font-semibold transition bg-slate-700 text-slate-400 hover:text-slate-100"[39m
+            [36m>[39m
+              [0mBefore[0m
+            [36m</button>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"w-px h-6 bg-slate-600"[39m
+            [36m/>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"px-3 py-1 rounded text-sm font-semibold transition bg-slate-600 text-slate-100"[39m
+            [36m>[39m
+              [0mAfter[0m
+            [36m</button>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"bg-slate-800 border border-slate-600 rounded-lg p-6"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mstyle[39m=[32m"position: relative; height: 300px; width: 100%;"[39m
+            [36m>[39m
+              [36m<p>[39m
+                [0mUnsupported chart type: [0m
+              [36m</p>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</body>[39m
+[36m</html>[39m
+ ❯ Proxy.waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ src/pages/ExecutiveSummaryPage.test.tsx:505:11
+    503| 
+    504|     // Wait for error to be displayed
+    505|     await waitFor(() => {
+       |           ^
+    506|       expect(screen.getByText(errorMessage)).toBeInTheDocument();
+    507|     });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/8]⎯
+
+ FAIL  src/pages/ExecutiveSummaryPage.test.tsx > ExecutiveSummaryPage Unit Tests > should display loading state while fetching data
+TestingLibraryElementError: Unable to find an element with the text: Loading chart data.... This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"ml-64 min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-slate-100 p-8"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"max-w-7xl mx-auto"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex justify-between items-center mb-8"[39m
+        [36m>[39m
+          [36m<div>[39m
+            [36m<h1[39m
+              [33mclass[39m=[32m"text-4xl font-bold mb-2"[39m
+            [36m>[39m
+              [0mExecutive Summary[0m
+            [36m</h1>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"text-slate-400"[39m
+            [36m>[39m
+              [0mKey performance indicators and trends overview[0m
+            [36m</p>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex items-center gap-2 mb-4 bg-slate-800 p-2 rounded border border-slate-600 w-fit"[39m
+        [36m>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"px-3 py-1 rounded text-sm font-semibold transition bg-slate-700 text-slate-400 hover:text-slate-100"[39m
+          [36m>[39m
+            [0mBefore[0m
+          [36m</button>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"w-px h-6 bg-slate-600"[39m
+          [36m/>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"px-3 py-1 rounded text-sm font-semibold transition bg-slate-600 text-slate-100"[39m
+          [36m>[39m
+            [0mAfter[0m
+          [36m</button>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"bg-slate-800 border border-slate-600 rounded-lg p-6"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mstyle[39m=[32m"position: relative; height: 300px; width: 100%;"[39m
+          [36m>[39m
+            [36m<p>[39m
+              [0mUnsupported chart type: [0m
+            [36m</p>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/pages/ExecutiveSummaryPage.test.tsx:557:19
+    555| 
+    556|     // Verify loading state is displayed
+    557|     expect(screen.getByText('Loading chart data...')).toBeInTheDocumen…
+       |                   ^
+    558| 
+    559|     // Resolve the promise
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/8]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  8 failed | 2 passed (10)
+   Start at  16:23:54
+   Duration  7.92s (transform 341ms, setup 458ms, import 1.42s, tests 3.37s, environment 2.32s)
+

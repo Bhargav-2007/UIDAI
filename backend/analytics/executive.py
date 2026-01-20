@@ -67,11 +67,11 @@ def calculate_operational_health() -> tuple[str, str]:
         
         # Health score based on utilization
         if utilization > 0.9:
-            return (f"{int(100 - utilization*10)}%", "⚠ High Capacity Usage")
+            return (f"{int(100 - utilization*10)}%", "High Capacity Usage")
         elif utilization > 0.7:
-            return (f"{int(100 - utilization*5)}%", "→ Moderate Load")
+            return (f"{int(100 - utilization*5)}%", "Moderate Load")
         else:
-            return (f"{int(100 - utilization*2)}%", "✓ Healthy")
+            return (f"{int(100 - utilization*2)}%", "Healthy")
     
     return ("75%", "Processing Data")
 
@@ -98,13 +98,13 @@ def calculate_forecast_growth() -> str:
         growth_pct = (slope / avg * 100) if avg > 0 else 0
         
         if growth_pct > 5:
-            return f"↑ +{growth_pct:.1f}% (Strong)"
+            return f"+{growth_pct:.1f}% (Strong)"
         elif growth_pct > 0:
-            return f"↗ +{growth_pct:.1f}% (Moderate)"
+            return f"+{growth_pct:.1f}% (Moderate)"
         else:
-            return f"↘ {growth_pct:.1f}% (Declining)"
+            return f"{growth_pct:.1f}% (Declining)"
     
-    return "→ Stable"
+    return "Stable"
 
 
 @router.get("/summary")
@@ -167,8 +167,8 @@ async def get_executive_summary() -> Dict[str, Any]:
             }
         ],
         "system_status": {
-            "api_status": "🟢 Online",
-            "db_connection": "🟢 Connected",
+            "api_status": "Online",
+            "db_connection": "Connected",
             "last_batch": datetime.now().strftime("%Y-%m-%d %H:%M UTC"),
             "security_level": "Level 3 (Audit)"
         }

@@ -52,7 +52,7 @@ function BeforeAnalysis() {
     if (error) {
         return (
             <div className="error-message">
-                <p>⚠️ Error loading data: {error}</p>
+                <p>Error loading data: {error}</p>
                 <p>Make sure the backend server is running on port 8000</p>
             </div>
         );
@@ -64,13 +64,13 @@ function BeforeAnalysis() {
         <div className="before-analysis fade-in">
             {/* Raw Data Badge */}
             <div className="raw-data-badge">
-                📊 Raw Data (No Intelligence Applied)
+                Raw Data (No Intelligence Applied)
             </div>
 
             {/* Basic Statistics */}
             <section className="section">
                 <div className="section-header">
-                    <div className="section-icon" style={{ background: 'rgba(107, 114, 128, 0.2)' }}>📈</div>
+                    <div className="section-icon" style={{ background: 'rgba(107, 114, 128, 0.2)' }}>STA</div>
                     <div>
                         <h2 className="section-title">Basic Statistics</h2>
                         <p className="section-subtitle">Simple counts and metrics without interpretation</p>
@@ -100,7 +100,7 @@ function BeforeAnalysis() {
             {/* Date Range */}
             <section className="section">
                 <div className="section-header">
-                    <div className="section-icon" style={{ background: 'rgba(107, 114, 128, 0.2)' }}>📅</div>
+                    <div className="section-icon" style={{ background: 'rgba(107, 114, 128, 0.2)' }}>PER</div>
                     <div>
                         <h2 className="section-title">Data Period</h2>
                         <p className="section-subtitle">Raw date range without trend analysis</p>
@@ -122,7 +122,7 @@ function BeforeAnalysis() {
             {/* Raw State Data Chart */}
             <section className="section">
                 <div className="section-header">
-                    <div className="section-icon" style={{ background: 'rgba(107, 114, 128, 0.2)' }}>📊</div>
+                    <div className="section-icon" style={{ background: 'rgba(107, 114, 128, 0.2)' }}>RAW</div>
                     <div>
                         <h2 className="section-title">State-wise Raw Data</h2>
                         <p className="section-subtitle">Simple aggregation without insights</p>
@@ -191,7 +191,7 @@ function BeforeAnalysis() {
             {/* Raw Data Table */}
             <section className="section">
                 <div className="section-header">
-                    <div className="section-icon" style={{ background: 'rgba(107, 114, 128, 0.2)' }}>📋</div>
+                    <div className="section-icon" style={{ background: 'rgba(107, 114, 128, 0.2)' }}>TBL</div>
                     <div>
                         <h2 className="section-title">Top Districts (Raw Data)</h2>
                         <p className="section-subtitle">No ranking analysis or significance</p>
@@ -225,7 +225,7 @@ function BeforeAnalysis() {
             {/* Missing Values Info */}
             <section className="section">
                 <div className="section-header">
-                    <div className="section-icon" style={{ background: 'rgba(107, 114, 128, 0.2)' }}>⚠️</div>
+                    <div className="section-icon" style={{ background: 'rgba(107, 114, 128, 0.2)' }}>ERR</div>
                     <div>
                         <h2 className="section-title">Data Quality</h2>
                         <p className="section-subtitle">Missing values count (no action recommendations)</p>
@@ -251,7 +251,7 @@ function BeforeAnalysis() {
             {/* Disclaimer */}
             <div className="card" style={{ textAlign: 'center', marginTop: '2rem' }}>
                 <p style={{ color: '#6b7280', fontSize: '0.875rem' }}>
-                    ℹ️ This view shows raw aggregated data without any analytical interpretation,
+                    This view shows raw aggregated data without any analytical interpretation,
                     trend analysis, anomaly detection, or actionable insights.
                 </p>
             </div>

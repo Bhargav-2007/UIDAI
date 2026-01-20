@@ -90,7 +90,7 @@ async def univariate_analysis() -> Dict[str, Any]:
                 "values": [int(v) for v in np.histogram(values, bins=20)[0]],
                 "bin_edges": [round(v, 0) for v in np.histogram(values, bins=20)[1]]
             },
-            "box_plot": null
+            "box_plot": None
         }
     }
 

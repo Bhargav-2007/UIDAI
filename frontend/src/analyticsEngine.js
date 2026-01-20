@@ -661,7 +661,7 @@ export function scenarioAnalysis(data) {
 export function survivalAnalysis(data) {
   const months = [0, 3, 6, 12, 24, 36, 48, 60];
   const survivalRate = [1.0, 0.95, 0.88, 0.76, 0.58, 0.42, 0.28, 0.15];
-  const cumHazard = [-Math.log(sr) for sr of survivalRate]; // Approximate
+  const cumHazard = survivalRate.map(sr => -Math.log(sr)); // Approximate
   
   return {
     metrics: {
